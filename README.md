@@ -1,8 +1,36 @@
 # unibasic README
 
-This is the README for your extension "unibasic". After writing up a brief description, we recommend including the following sections.
+## UniBasic Extension for VS Code
+This extension is based on work by Jacob Bennett and Travis Mallek pick highlighting.
+Conformed and updated for UniBasic (principally UniVerse).
+The intention is to continuously improve this by adding formatting and other features along the way.
 
-## Features
+##Version 1.0
+* Imported Mallek's package for Pick for VS Code
+* Updated syntaxes for UniVerse
+* updated README
+
+##Installation
+Inside VSCode from the command pallet Install Extension -> PickBasic
+
+###- Manual Install
+ `git clone` this repository into your `.vscode/Extensions` folder
+ If you do not have git installed you can download the zip of this repository and unzip it to the same location.
+
+* **Windows** %USERPROFILE%\\.vscode\extensions
+* **Mac** ~/.vscode/extensions
+* **Linux** ~/.vscode/extensions
+
+##Credits
+
+Thanks for the original work done by Jacob Bennett and Travis Mallek to get this far.
+
+https://github.com/JacobBennett/sublime-pickbasic
+https://github.com/mallek/vscode-pick-basic-syntax-highlighter
+
+**Enjoy!**
+
+<!-- ## Features
 
 Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
 
@@ -62,4 +90,4 @@ Added features X, Y, and Z.
 * [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
 * [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
-**Enjoy!**
+**Enjoy!** -->
