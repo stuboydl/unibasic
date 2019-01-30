@@ -2,20 +2,24 @@
 
 ## UniBasic Extension for VS Code
 This extension is based on work by Jacob Bennett and Travis Mallek pick highlighting.
+
 Conformed and updated for UniBasic (principally UniVerse).
+
 The intention is to continuously improve this by adding formatting and other features along the way.
 
-##Version 1.0
+Version 1.0
 * Imported Mallek's package for Pick for VS Code
 * Updated syntaxes for UniVerse
 * updated README
 
-##Installation
+Installation
 Inside VSCode from the command pallet Install Extension -> PickBasic
 
-###- Manual Install
- `git clone` this repository into your `.vscode/Extensions` folder
- If you do not have git installed you can download the zip of this repository and unzip it to the same location.
+Manual Install
+
+`git clone` this repository into your `.vscode/Extensions` folder
+
+If you do not have git installed you can download the zip of this repository and unzip it to the same location.
 
 * **Windows** %USERPROFILE%\\.vscode\extensions
 * **Mac** ~/.vscode/extensions
@@ -26,6 +30,7 @@ Inside VSCode from the command pallet Install Extension -> PickBasic
 Thanks for the original work done by Jacob Bennett and Travis Mallek to get this far.
 
 https://github.com/JacobBennett/sublime-pickbasic
+
 https://github.com/mallek/vscode-pick-basic-syntax-highlighter
 
 **Enjoy!**
