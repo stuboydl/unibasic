@@ -13,6 +13,16 @@
       "keywords": {
          "patterns": [
             {
+               "name": "comment.line.asterisk.unibasic",
+               "match": "^\\s*(\\!.*|\\*.*|(?i)rem.*)",
+               "QuoteComment-deprecate??": "(^['|\"]*|\\s)" 
+            },
+            {
+               "comment": "inline comment",
+               "name": "comment.line.asterisk.unibasic",
+               "match": ";\\s*(\\!.*|\\*.*)"
+            },
+            {
                "name": "keyword.operator.unibasic",
                "match": "\\B(=|<|>|<=|>=|!=|\\*|\\^|/|\\-|\\:|\\+)\\B"
             },
@@ -44,16 +54,6 @@
                      "name": "comment.line.asterisk.unibasic"
                   }
                }
-            },
-            {
-               "name": "comment.line.asterisk.unibasic",
-               "match": "^\\s*(\\!.*|\\*.*|(?i)rem.*)",
-               "comment": " not sure? ->  (^['|\"]*|\\s)" 
-            },
-            {
-               "comment": "inline comment",
-               "name": "comment.line.asterisk.unibasic",
-               "match": ";\\s*(\\!.*|\\*.*)"
             },
             {
                "comment": "nummers",
