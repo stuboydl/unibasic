@@ -14,12 +14,16 @@
          "patterns": [
             {
                "name": "keyword.operator.unibasic",
-               "match": "(?i:=|<|>|\\b==\\b|!=|\\bne\\b|\\band\\b|\\beq\\b|\\blt\\b|\\bgt\\b|\\:|\\+)"
+               "match": "\\B(=|<|>|<=|>=|!=|\\*|\\^|/|\\-|\\:|\\+)\\B"
+            },
+            {
+               "name": "keyword.operator.unibasic",
+               "match": "\\b(?i:and|or|not|eq|lt|gt|ne|le|ge)\\b"
             },
             {
                "comment": "invoke internal/external subroutine",
                "name": "entity.name.function.unibasic",
-               "match": "(?i)(sub|subroutine|call|function|gosub|goto|chain)\\s+([a-z0-9_\\-\\.]+)\\b",
+               "match": "(?i)(call|function|gosub|goto|sub|subroutine)\\s+([a-z0-9_\\-\\.]+)\\b",
                "captures": {
                   "1": {
                      "name": "storage.type.unibasic"
@@ -44,7 +48,7 @@
             {
                "name": "comment.line.asterisk.unibasic",
                "match": "^\\s*(\\!.*|\\*.*|(?i)rem.*)",
-               "comment": " not sure? ->  (^['|\"]*|\\s)"
+               "comment": " not sure? ->  (^['|\"]*|\\s)" 
             },
             {
                "comment": "inline comment",
@@ -57,17 +61,22 @@
                "match": "\\b([0-9]+)\\b"
             },
             {
-               "name": "keyword.control.unibasic",
-               "match": "\\b(?i:begin|case|continue|debug|dim|dimension|do|else|error|exec|execute|exit|filelock|fileunlock|for|from|go|gosub|goto|if|loop|next|on|repeat|return|stop|then|transaction|until|while)\\b"
+               "name": "storage.type.unibasic",
+               "match": "\\s(?i:begin|case|continue|debug|dim|dimension|do|error|exec|execute|exit|filelock|fileunlock|for|from|go|gosub|goto|if|loop|next|on|repeat|return|stop|then|transaction|until|while)\\s"
             },
             {
                "name": "keyword.control.unibasic",
-               "match": "^\\s*(?i:common|include|assigned|deffun|equ|equate|end)\\b"
+               "match": "^\\s*(?i:assigned|chain|common|deffun|equ|equate|include)\\s"
+            },
+            {
+               "comment": "vector functions",
+               "name": "keyword.other.unibasic",
+               "match": "\\s(?i:adds|ands|cats|chars|counts|divs|eqs|fields|fmts|ges|gts|iconvs|ifs|indexs|isnulls|lens|les|lts|mods|muls|nes|nots|nums|oconvs|ors|seqs|spaces|splice|strs|subs|substrings|trims)(?!\\.)\\b"
             },
             {
                "comment": "",
                "name": "storage.type.unibasic",
-               "match": "\\b(?i)(abort|abs|abss|adds|alpha|ands|ascii|before|bitchange|bitcheck|bitreset|bitsetbytelen|break|callc|calldotnet|callj|callonexit|capturing|cats|change|changetimestamp|char|chars|chdir|checksum|clear|clearcommon|cleardata|clearfile|clearinput|clearselect|close|closeseq|col1|col2|collectdata|compare|convert|convertcos|count|counts|create|crt|data|date|dcount|decrypt|defc|defce|del|delete|deletelist|deleteseq|deleteu|div|divs|downcase|dquote|dround|dtx|dyntoxmlebcdic|echo|encrypt|end|enter|eqs|ereplace|exp|extract|field|fields|fileinfo|find|findstr|flush|fmt|fmts|fold|footing|format|formlist|ges|get|getcwdgetenv|getlist|getusergroup|getx|group|heading|headinge|headingn|hush|iconv|iconvs|if|ifs|in|index|inmat|input|inputnull|ins|insert|int|isalnumisdigit|isalpha|iscntrl|islower|isprint|isspace|isupper|itype|jbasecoredump|jbasethreadcreatejbasethreadstatus|jqlexecute|jqlfetch|jqlgetproperty|jqlputproperty|keyin|latin1|left|len|lendp|lens|les|ln|localdatelocaltime|locate|lock|loop|lowcase|lower|maketimestamp|mat|matbuild|matchfield|matparse|matread|matreadu|matwrite|matwriteu|mod|mods|msleep|muls|negs|nes|nobuff|notsnum|null|nums|objexcallback|oconv|oconvs|open|opendev|openpath|openseq|openser|ors|osbread|osbwrite|osclose|osdelete|osopen|osread|oswrite|out|page|passlist|pause|pcperform|perform|precision|print|printer|printerr|procread|procwrite|program|prompt|putenv|pwr|quote|raise|read|readblk|readl|readlist|readnext|readselect|readseq|readt|readu|readv|readvl|readvu|readxml|recordlocked|release|remove|replace|return|returning|rewind|right|rndsadd|rqm|rtndata|rtnlist|sdiv|seek|select|send|sendx|sentence|seq|seqs|setting|sin|sleep|smul|sort|soundex|space|spaces|splice|spoolersqrt|squote|sselect|sselectn|sselectv|ssub|str|strs|subs|substrings|sum|swap|system|tan|tanh|time|timedate|timeout|to|trans|trim|trimb|trimbs|trimf|trimfs|udtexecute|unassigned|uniquekeyupcase|unlock|utf8|wake|weof|weofseq|write|writeblk|writelist|writeseq|writet|writeu|writev|writevu|writexml|xlate|xmltodyn|xmltoxml|xtdjqlcompile)\\b"
+               "match": "\\b(?<!\\.)(?i:abort|abs|abss|alpha|ascii|before|bitchange|bitcheck|bitreset|bitsetbytelen|break|callc|calldotnet|callj|callonexit|capturing|change|changetimestamp|char|chdir|checksum|clear|clearcommon|cleardata|clearfile|clearinput|clearselect|close|closeseq|col1|col2|collectdata|compare|convert|convertcos|count|create|crt|data|date|dcount|decrypt|defc|defce|del|delete|deletelist|deleteseq|deleteu|div|downcase|dquote|dround|dtx|dyntoxmlebcdic|echo|else|encrypt|end|enter|ereplace|exp|extract|field|fileinfo|find|findstr|flush|fmt|fold|footing|format|formlist|get|getcwdgetenv|getlist|getusergroup|getx|group|heading|headinge|headingn|hush|iconv|if|in|index|inmat|input|inputnull|ins|insert|int|isalnumisdigit|isalpha|iscntrl|islower|isprint|isspace|isupper|itype|jbasecoredump|jbasethreadcreatejbasethreadstatus|jqlexecute|jqlfetch|jqlgetproperty|jqlputproperty|keyin|latin1|left|len|lendp|ln|localdatelocaltime|locate|lock|loop|lowcase|lower|maketimestamp|mat|matbuild|matchfield|matparse|matread|matreadu|matwrite|matwriteu|mod|msleep|negs|nobuff|num|null|objexcallback|oconv|open|opendev|openpath|openseq|openser|osbread|osbwrite|osclose|osdelete|osopen|osread|oswrite|out|page|passlist|pause|pcperform|perform|precision|print|printer|printerr|procread|procwrite|program|prompt|putenv|pwr|quote|raise|read|readblk|readl|readlist|readnext|readselect|readseq|readt|readu|readv|readvl|readvu|readxml|recordlocked|release|remove|replace|return|returning|rewind|right|rndsadd|rqm|rtndata|rtnlist|sdiv|seek|select|send|sendx|sentence|seq|setting|sin|sleep|smul|sort|soundex|space|spoolersqrt|squote|sselect|sselectn|sselectv|ssub|str|sum|swap|system|tan|tanh|time|timedate|timeout|to|trans|trim|trimb|trimbs|trimf|trimfs|udtexecute|unassigned|uniquekey|upcase|unlock|utf8|wake|weof|weofseq|write|writeblk|writelist|writeseq|writet|writeu|writev|writevu|writexml|xlate|xmltodyn|xmltoxml|xtdjqlcompile)(?!\\.)\\b"
             }
          ]
       },

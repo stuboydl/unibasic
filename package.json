@@ -2,17 +2,28 @@
    "name": "unibasic",
    "publisher": "stuboydl",
 	"displayName": "UniBasic",
-	"description": "Rocket U2 Basic",
-	"version": "0.0.1",
+	"description": "Rocket UniVerse Basic. VS Code Syntax extension",
+   "version": "0.0.2",
+   "license": "MIT",
+   "homepage": "https://github.com/stuboydl/unibasic/blob/master/README.md",
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/stuboydl/unibasic"
+   },
+   "bugs": {
+      "url": "https://github.com/stuboydl/unibasic/issues"
+   },
+   "galleryBanner": {
+      "color": "#0000FF",
+      "theme": "dark"
+   },
 	"engines": {
 		"vscode": "^1.30.0"
 	},
 	"categories": [
 		"Programming Languages"
 	],
-	"activationEvents": [
-		"onCommand:extension.helloWorld"
-	],
+	"activationEvents": [],
 	"main": "./out/extension.js",
 	"contributes": {
       "languages": [{
@@ -26,12 +37,7 @@
          "scopeName": "source.unibasic",
          "path": "./syntaxes/unibasic.tmLanguage.json"
      }], 
-		"commands": [
-			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
-			}
-		]
+		"commands": []
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
