@@ -62,7 +62,7 @@
             },
             {
                "name": "storage.type.unibasic",
-               "match": "\\s(?i:begin|case|continue|debug|dim|dimension|do|error|exec|execute|exit|filelock|fileunlock|for|from|go|gosub|goto|if|loop|next|on|repeat|return|stop|then|transaction|until|while)\\s"
+               "match": "\\s(?i:begin|case|continue|debug|dim|dimension|do|error|exec|execute|exit|filelock|fileunlock|for|from|go|gosub|goto|if|locked|loop|next|on|recordlockl|recordlocku|repeat|return|stop|then|transaction|until|while)\\s"
             },
             {
                "name": "keyword.control.unibasic",
