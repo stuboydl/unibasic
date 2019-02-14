@@ -1,3 +1,6 @@
+## Version 0.0.3
+- Add most of the missing UV verbs and reorganise the tmLanguage file
+
 ## Version 0.0.2
 - Update verb matching to ignore variables with dots which contain verbs eg open.balance
 - Implement changelog (this)

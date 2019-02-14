@@ -24,16 +24,15 @@
             },
             {
                "name": "keyword.operator.unibasic",
-               "match": "\\B(=|<|>|<=|>=|!=|\\*|\\^|/|\\-|\\:|\\+)\\B"
+               "match": "\\B(=|<|>|<=|>=|!=|\\*|\\^|/|\\-|\\:|\\+|#)\\B"
             },
             {
                "name": "keyword.operator.unibasic",
                "match": "\\b(?i:and|or|not|eq|lt|gt|ne|le|ge)\\b"
             },
             {
-               "comment": "invoke internal/external subroutine",
-               "name": "entity.name.function.unibasic",
-               "match": "(?i)(call|function|gosub|goto|sub|subroutine)\\s+([a-z0-9_\\-\\.]+)\\b",
+               "comment": "invoke general internal/external subroutine",
+               "match": "(?i)(call|function|gosub|go|goto|program|sub|subroutine)\\s+([a-z0-9_\\-\\.]+)\\b",
                "captures": {
                   "1": {
                      "name": "storage.type.unibasic"
@@ -45,7 +44,7 @@
             },
             {
                "comment": "internal subroutine label",
-               "match": "^(?i)([A-Z_\\.0-9]*):\\s*($|\\!.*|\\*.*)",
+               "match": "^(?i)([A-Z_\\.0-9]*:)[\\s|;]*($|\\!.*|\\*.*)",
                "captures": {
                   "1": {
                      "name": "entity.name.class.unibasic"
@@ -56,37 +55,99 @@
                }
             },
             {
+               "comment": "invoke external helper subroutine",
+               "match": "(?i)(call)\\s+(!async|!errno|!fcmp|!get.partnum|!get.pathname|!get.pu|!get.user.counts|!inline.prompts|!ints|!make.pathname|!matches|!message|!report.error|!set.ptr|!set.pu|!timdat|!user.type|!voc.pathname)\\b",
+               "captures": {
+                  "1": {
+                     "name": "storage.type.unibasic"
+                  },
+                  "2": {
+                     "name": "support.function.unibasic"
+                  }
+               }
+            },
+            {
                "comment": "nummers",
                "name": "constant.numeric.unibasic",
                "match": "\\b([0-9]+)\\b"
             },
             {
                "name": "storage.type.unibasic",
-               "match": "\\s(?i:begin|case|continue|debug|dim|dimension|do|error|exec|execute|exit|filelock|fileunlock|for|from|go|gosub|goto|if|locked|loop|next|on|recordlockl|recordlocku|repeat|return|stop|then|transaction|until|while)\\s"
+               "match": "\\b(?<!\\.)(?i:assign|begin|by|calling|case|commit|continue|debug|dim|dimension|do|end|error|exec|execute|exit|filelock|fileunlock|for|from|go|if|in|isolation|level|lit|literally|locked|loop|next|off|on|perform|recordlockl|recordlocku|release|repeat|return|rollback|step|stop|system|then|transaction|until|using|while)(?!\\.)\\b"
             },
             {
                "name": "keyword.control.unibasic",
-               "match": "^\\s*(?i:assigned|chain|common|deffun|equ|equate|include)\\s"
+               "match": "^\\s*(?i:assigned|chain|com|common|deffun|equ|equate|include)(?!\\.)\\b"
+            },
+            {
+               "comment": "#include",
+               "name": "keyword.control.unibasic",
+               "match": "^\\s*(?i:\\#include)(?!\\.)\\b"
+            },
+            {
+               "comment": "@ commands",
+               "name": "constant.character.escape.unibasic",
+               "match": "(@(?i:abort\\.code|account|am|ans|authorization|command|command\\.stack|conv|crthigh|crtwide|data\\.pending|date|day|dict|false|file\\.name|filename|fm|format|hdbc|header|henv|hstmt|id|im|isolation|level|logname|lptrhigh|lptrwide|month|mv|nb|nd|new|ni|ns|null|null\\.str|nv|old|option|parasentence|path|reccount|record|recur0|recur1|recur2|recur3|recur4|schema|selected|sentence|sm|sql\\.code|sql\\.date|sql\\.error|sql\\.state|sql\\.time|sql\\.warning|sqlproc\\.name|sqlproc\\.tx\\.level|stdfil|svm|sys\\.bell|system\\.return\\.code|system\\.set|term\\.type|time|tm|transaction|transaction\\.id|transaction\\.level|true|tty|user0|user1|user2|user3|user4|userno|user\\.no|user\\.return\\.code|vm|who|year|year4))(?!\\.)\\b"
+            },
+            {
+               "comment": "$ directives",
+               "name": "keyword.control.unibasic",
+               "match": "^\\s*(\\$(?i:chain|copyright|define|eject|else|endif|ifdef|ifndef|include|indef|insert|map|options|page|undefine))(?!\\.)\\b"
             },
             {
                "comment": "vector functions",
                "name": "keyword.other.unibasic",
-               "match": "\\s(?i:adds|ands|cats|chars|counts|divs|eqs|fields|fmts|ges|gts|iconvs|ifs|indexs|isnulls|lens|les|lts|mods|muls|nes|nots|nums|oconvs|ors|seqs|spaces|splice|strs|subs|substrings|trims)(?!\\.)\\b"
+               "match": "\\s(?i:adds|ands|cats|chars|counts|divs|eqs|fields|fmts|ges|gts|iconvs|ifs|indexs|isnulls|lens|lensdp|les|lts|mods|muls|negs|nes|nots|nums|oconvs|ors|reuse|seqs|spaces|splice|strs|subs|substrings|summation|trims|unichars|uniseqs)(?!\\.)\\b"
             },
             {
-               "comment": "",
+               "comment": "ab",
                "name": "storage.type.unibasic",
-               "match": "\\b(?<!\\.)(?i:abort|abs|abss|alpha|ascii|before|bitchange|bitcheck|bitreset|bitsetbytelen|break|callc|calldotnet|callj|callonexit|capturing|change|changetimestamp|char|chdir|checksum|clear|clearcommon|cleardata|clearfile|clearinput|clearselect|close|closeseq|col1|col2|collectdata|compare|convert|convertcos|count|create|crt|data|date|dcount|decrypt|defc|defce|del|delete|deletelist|deleteseq|deleteu|div|downcase|dquote|dround|dtx|dyntoxmlebcdic|echo|else|encrypt|end|enter|ereplace|exp|extract|field|fileinfo|find|findstr|flush|fmt|fold|footing|format|formlist|get|getcwdgetenv|getlist|getusergroup|getx|group|heading|headinge|headingn|hush|iconv|if|in|index|inmat|input|inputnull|ins|insert|int|isalnumisdigit|isalpha|iscntrl|islower|isprint|isspace|isupper|itype|jbasecoredump|jbasethreadcreatejbasethreadstatus|jqlexecute|jqlfetch|jqlgetproperty|jqlputproperty|keyin|latin1|left|len|lendp|ln|localdatelocaltime|locate|lock|loop|lowcase|lower|maketimestamp|mat|matbuild|matchfield|matparse|matread|matreadu|matwrite|matwriteu|mod|msleep|negs|nobuff|num|null|objexcallback|oconv|open|opendev|openpath|openseq|openser|osbread|osbwrite|osclose|osdelete|osopen|osread|oswrite|out|page|passlist|pause|pcperform|perform|precision|print|printer|printerr|procread|procwrite|program|prompt|putenv|pwr|quote|raise|read|readblk|readl|readlist|readnext|readselect|readseq|readt|readu|readv|readvl|readvu|readxml|recordlocked|release|remove|replace|return|returning|rewind|right|rndsadd|rqm|rtndata|rtnlist|sdiv|seek|select|send|sendx|sentence|seq|setting|sin|sleep|smul|sort|soundex|space|spoolersqrt|squote|sselect|sselectn|sselectv|ssub|str|sum|swap|system|tan|tanh|time|timedate|timeout|to|trans|trim|trimb|trimbs|trimf|trimfs|udtexecute|unassigned|uniquekey|upcase|unlock|utf8|wake|weof|weofseq|write|writeblk|writelist|writeseq|writet|writeu|writev|writevu|writexml|xlate|xmltodyn|xmltoxml|xtdjqlcompile)(?!\\.)\\b"
+               "match": "\\b(?<!\\.)(?i:abort|abs|abss|acos|alpha|ascii|asin|atan|auxmap|before|bitand|bitnot|bitor|bitreset|bitset|bittest|bitxor|break|bscan|byte|bytelen|bytetype|byteval)(?!\\.)\\b"
+            },
+            {
+               "comment": "c",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:capturing|cat|century\\.pivot|change|changetimestamp|char|chdir|checksum|clear|clearcommon|cleardata|clearfile|clearinput|clearprompts|clearselect|close|closeseq|col1|col2|collectdata|compare|convert|convertcos|cos|cosh|count|create|crt)(?!\\.)\\b"
+            },
+            {
+               "comment": "de",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:data|date|dcount|declare|decrypt|defc|defce|del|delete|deletelist|deleteu|descrinfo|digest|disabledec|display|div|downcase|dquote|dround|dtx|ebcdic|echo|else|enabledec|encode|encrypt|enter|eof\\(arg\\.\\)|ereplace|errmsg|exchange|exp|extract)(?!\\.)\\b"
+            },
+            {
+               "comment": "fgh",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:fadd|fdiv|ffix|fflt|field|fieldstore|fileinfo|find|findstr|fix|flush|fmt|fmtdp|fmtsdp|fmul|fold|folddp|footing|format|formlist|fsub|get|get\\(arg\\.\\)|getcwdgetenv|getlist|getlocale|getrem|getusergroup|getx|group|groupstore|heading|headinge|headingn|hush)(?!\\.)\\b"
+            },
+            {
+               "comment": "ijkl",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:icheck|iconv|ilprompt|index|indices|inmat|input|inputclear|inputdisp|inputdp|inputerr|inputif|inputnull|inputtrap|ins|insert|int|isalnumisdigit|isalpha|iscntrl|islower|isnull|isprint|isspace|isupper|itype|keyedit|keyexit|keyin|keytrap|latin1|left|len|lendp|let|ln|localdatelocaltime|locate|lock|lowcase|lower)(?!\\.)\\b"
+            },
+            {
+               "comment": "mno",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:maketimestamp|mat|matbuild|match|matches|matchfield|matparse|matread|matreadl|matreadu|matwrite|matwriteu|maximum|minimum|mod|msleep|nap|neg|nobuf|null|num|oconv|open|opencheck|opendev|openpath|openseq|openser|osbread|osbwrite|osclose|osdelete|osopen|osread|oswrite|out)(?!\\.)\\b"
+            },
+            {
+               "comment": "pqr",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:page|passlist|pause|pcperform|precision|print|printer|printerr|procread|procwrite|prompt|putenv|pwr|quote|raise|randomize|read|readblk|readl|readlist|readnext|readselect|readseq|readt|readu|readv|readvl|readvu|readxml|real|recordlocked|remove|replace|returning|revremove|rewind|right|rnd|rqm|rtndata|rtnlist|rpc\\.call|rpc\\.connect|rpc\\.disconnect)(?!\\.)\\b"
+            },
+            {
+               "comment": "st",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:sadd|scmp|sdiv|seek|seek\\(arg\\.\\)|select|selecte|selectindex|selectinfo|selectn|selectv|send|sentence|seq|setting|set|setrem|sin|sinh|sleep|smul|sort|soundex|space|sqrt|squote|sselect|sselectn|sselectv|ssub|start|status|str|subr|sum|swap|tabstop|tan|tanh|terminfo|time|timedate|timeout|to|tparm|tprint|trans|trim|trimb|trimbs|trimf|trimfs|ttyctl|ttyget|ttyset)(?!\\.)\\b"
+            },
+            {
+               "comment": "uvwxyz",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:udtexecute|unassigned|unichar|uniseq|unlock|upcase|uprint|weof|weofseq|write|writeblk|writelist|writeseq|writeseqf|writet|writeu|writev|writevu|writexml|xlate|xtd)(?!\\.)\\b"
             }
          ]
       },
       "strings": {
          "patterns": [
-            {
-               "comment": "@ commands",
-               "name": "constant.character.escape",
-               "match": "(?i:@[a-z]+)"
-            },
             {
                "begin": "\"",
                "end": "\"",

@@ -25,6 +25,20 @@ If you do not have git installed you can download the zip of this repository and
 * **Mac** ~/.vscode/extensions
 * **Linux** ~/.vscode/extensions
 
+Recommmend default Dark+ theme
+Also, keyword.operator foreground may need tweaking
+   "editor.tokenColorCustomizations": {
+      "textMateRules": [
+         {
+            "scope": "keyword.operator",
+            "settings": {
+               "foreground": "#9ebefd"
+            }
+         }
+      ],
+   }
+
+
 ##Credits
 
 Thanks for the original work done by Jacob Bennett and Travis Mallek to get this far.
