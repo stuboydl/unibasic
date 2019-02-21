@@ -32,7 +32,7 @@
             },
             {
                "comment": "invoke general internal/external subroutine",
-               "match": "(?i)(call|function|gosub|go|goto|prog|program|sub|subroutine)\\s+([a-z0-9_\\-\\.]+)\\b",
+               "match": "\\b(?i:call|function|gosub|go|goto|prog|program|sub|subroutine)\\s+([a-z0-9_\\-\\.]+)\\b",
                "captures": {
                   "1": {
                      "name": "storage.type.unibasic"
@@ -157,8 +157,13 @@
                "begin": "'",
                "end": "'",
                "name": "string.quoted.single"
-           }
-         ]
+           },
+           {
+            "begin": "\\\\",
+            "end": "\\\\",
+            "name": "string.quoted.other"
+         }
+      ]
       }
    },
    "scopeName": "source.unibasic"
