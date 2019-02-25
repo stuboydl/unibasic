@@ -142,7 +142,7 @@
             {
                "comment": "uvwxyz",
                "name": "storage.type.unibasic",
-               "match": "\\b(?<!\\.)(?i:udtexecute|unassigned|unichar|uniseq|unlock|upcase|uprint|weof|weofseq|write|writeblk|writelist|writeseq|writeseqf|writet|writeu|writev|writevu|writexml|xlate|xtd)(?!\\.)\\b"
+               "match": "\\b(?<!\\.)(?i:udtexecute|unassigned|unichar|uniseq|unlock|upcase|uprint|userinfo|weof|weofseq|write|writeblk|writelist|writeseq|writeseqf|writet|writeu|writev|writevu|writexml|xlate|xtd)(?!\\.)\\b"
             }
          ]
       },
