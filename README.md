@@ -11,7 +11,7 @@ Version 1.0
 * Imported Mallek's package for Pick for VS Code
 * Updated syntaxes for UniVerse
 * updated README
-* See [[Changelog.md]] for more...
+* See [Changelog.md] for more...
 
 Installation
 Inside VSCode from the command pallet Install Extension -> PickBasic
