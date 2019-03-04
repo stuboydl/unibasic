@@ -11,7 +11,8 @@ Version 1.0
 * Imported Mallek's package for Pick for VS Code
 * Updated syntaxes for UniVerse
 * updated README
-* See [[Changelog.md]] for more...
+* Added [Wiki](https://github.com/stuboydl/unibasic/wiki/Notes-on-using-vscode-with-Windows-UV-SB--git) for notes on how to set up your environment.
+* See [Changelog.md](https://github.com/stuboydl/unibasic/blob/master/CHANGELOG.md) for more...
 
 Installation
 Inside VSCode from the command pallet Install Extension -> PickBasic
@@ -39,6 +40,8 @@ Also, keyword.operator foreground may need tweaking
       ],
    }
 
+## Notes on Usage
+- See the Wiki for more notes
 
 ##Credits
 
