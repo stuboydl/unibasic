@@ -102,6 +102,13 @@
        ],
        "description":"Code snippet for a bscan statement"
     },
+    "index":{
+       "prefix" : "index",
+       "body":[
+         "index(${1:string}, ${2:substring}, ${3:occurrence})"
+       ],
+       "description":"Code snippet for an index statement"
+    },
     "read":{
        "prefix": "read",
        "body" :[

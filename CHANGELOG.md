@@ -1,5 +1,6 @@
 ## Version 0.0.4
 - Add snippets
+- Add folding region signifiers - !#region/!#endregion 
 
 ## Version 0.0.3
 - Add most of the missing UV verbs and reorganise the tmLanguage file
