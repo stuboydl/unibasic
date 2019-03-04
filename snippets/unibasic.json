@@ -1,0 +1,115 @@
+{
+    "if": {
+        "prefix": "if",
+        "body": [
+            "if ${1:condition} then",
+            "\t${2:expression}",
+            "end"
+        ],
+        "description": "Code snippet for an if statement"
+    },
+    "if/then":{
+       "prefix": "if/then",
+       "body":[
+          "if ${1:condition} then $2:{expression}"
+       ],
+       "description": "Code snippet for an if statement"
+    },
+    "if/then/else": {
+        "prefix": "if/then/else",
+        "body": [
+            "if ${1:condition} then",
+            "\t${2:expression}",
+            "end else",
+            "\t${3:expression}",
+            "end"
+        ],
+        "description": "Code snippet for an if then else statement"
+    },
+    "else": {
+        "prefix": "else",
+        "body": [
+            "else",
+            "\t${1:expression}",
+            "end"
+        ],
+        "description": "Code snippet for an else"
+    },
+    "end/else": {
+        "prefix": "end else",
+        "body": [
+            "end else:",
+            "\t${1:expression}",
+            "end"
+        ],
+        "description": "Code snippet for an end else"
+    },
+    "loop": {
+        "prefix": "loop",
+        "body": [
+            "loop while ${1:condition} do",
+            "\t${2:expression}",
+            "repeat"
+        ],
+        "description": "Code snippet for a while loop"
+    },
+    "loop/readnext": {
+        "prefix": "loop/readnext",
+        "body": [
+            "loop while readnext id do",
+            "\t${2:expression}",
+            "repeat"
+        ],
+        "description": "Code snippet for a while readnext loop"
+    },
+    "loop/until": {
+        "prefix": "loop/until",
+        "body": [
+            "loop until ${1:expression} do",
+            "\t${2:expression}",
+            "repeat"
+        ],
+        "description": "Code snippet for a while loop until"
+    },
+    "for/next": {
+        "prefix": "for/next",
+        "body": [
+            "for ${1:iterator} = 1 to ${2:maximum}",
+            "\t${3:expression}",
+            "next ${1:iterator}"
+        ],
+        "description": "Code snippet for a for next loop"
+    },
+    "change":{
+       "prefix" : "change",
+       "body":[
+         "change(${1:variable}, ${2:substring}, ${3:replacement} ${4:[,occurrence} ${5:[,begin]})"
+       ],
+       "description":"Code snippet for a change function"
+    },
+    "convert":{
+       "prefix" : "convert",
+       "body":[
+         "convert(${1:char_list}, ${2:char_repl}, ${3:variable})"
+       ],
+       "description":"Code snippet for a convert function"
+    },
+    "bscan":{
+       "prefix" : "bscan",
+       "body":[
+         "bscan ${1:idx_id} ${2:[,id_list]} from ${3:filvar} ,${4:match_string}",
+         "\tusing '${5:indexname}' [RESET] [BY seq] then | else"
+       ],
+       "description":"Code snippet for a bscan statement"
+    },
+    "read":{
+       "prefix": "read",
+       "body" :[
+          "read ${1:record} from ${2:filvar},${3:rec_id} then",
+          "\t${4:expression}",
+          "end else",
+          "\t${5:expression}",
+          "end"
+       ]
+    }
+}

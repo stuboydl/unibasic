@@ -3,7 +3,7 @@
    "publisher": "stuboydl",
 	"displayName": "UniBasic",
 	"description": "Rocket UniVerse Basic. VS Code Syntax extension",
-   "version": "0.0.3",
+   "version": "0.0.4",
    "license": "MIT",
    "homepage": "https://github.com/stuboydl/unibasic/blob/master/README.md",
    "repository": {
@@ -32,6 +32,12 @@
          "extensions": [""],
          "configuration": "./language-configuration.json"
      }],
+     "snippets": [
+        {
+           "language": "unibasic",
+           "path": "./snippets/unibasic.json"
+        }
+     ],
      "grammars": [{
          "language": "unibasic",
          "scopeName": "source.unibasic",
