@@ -14,7 +14,7 @@
          "patterns": [
             {
                "name": "comment.line.asterisk.unibasic",
-               "match": "^\\s*(\\!.*|\\*.*|(?i)rem.*)",
+               "match": "^\\s*(\\!.*|\\*.*|(?i)rem\\s.*)",
                "QuoteComment-deprecate??": "(^['|\"]*|\\s)" 
             },
             {
