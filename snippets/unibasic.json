@@ -1,28 +1,28 @@
 {
     "if": {
-        "prefix": "if",
+        "prefix": "IF",
         "body": [
-            "if ${1:condition} then",
-            "\t${2:expression}",
-            "end"
+            "IF ${1:condition} THEN",
+            "   ${2:expression}",
+            "END"
         ],
         "description": "Code snippet for an if statement"
     },
     "if/then":{
        "prefix": "if/then",
        "body":[
-          "if ${1:condition} then ${2:expression}"
+          "IF ${1:condition} THEN ${2:expression}"
        ],
        "description": "Code snippet for an if statement"
     },
     "if/then/else": {
         "prefix": "if/then/else",
         "body": [
-            "if ${1:condition} then",
+            "IF ${1:condition} THEN",
             "\t${2:expression}",
-            "end else",
+            "END ELSE",
             "\t${3:expression}",
-            "end"
+            "END"
         ],
         "description": "Code snippet for an if then else statement"
     },
@@ -38,75 +38,75 @@
     "end/else": {
         "prefix": "end else",
         "body": [
-            "end else",
+            "END ELSE",
             "\t${1:expression}",
-            "end"
+            "END"
         ],
         "description": "Code snippet for an end else"
     },
     "loop": {
         "prefix": "loop",
         "body": [
-            "loop while ${1:condition} do",
+            "LOOP WHILE ${1:condition} DO",
             "\t${2:expression}",
-            "repeat"
+            "REPEAT"
         ],
         "description": "Code snippet for a while loop"
     },
     "loop/readnext": {
         "prefix": "loop/readnext",
         "body": [
-            "loop while readnext id do",
+            "LOOP WHILE READNEXT ID DO",
             "\t${2:expression}",
-            "repeat"
+            "REPEAT"
         ],
         "description": "Code snippet for a while readnext loop"
     },
     "loop/until": {
         "prefix": "loop/until",
         "body": [
-            "loop until ${1:expression} do",
+            "LOOP UNTIL ${1:expression} DO",
             "\t${2:expression}",
-            "repeat"
+            "REPEAT"
         ],
         "description": "Code snippet for a while loop until"
     },
     "for/next": {
         "prefix": "for/next",
         "body": [
-            "for ${1:iterator} = 1 to ${2:maximum}",
+            "FOR ${1:iterator} = 1 TO ${2:maximum}",
             "\t${3:expression}",
-            "next ${1:iterator}"
+            "NEXT ${1:iterator}"
         ],
         "description": "Code snippet for a for next loop"
     },
     "change":{
        "prefix" : "change",
        "body":[
-         "change(${1:variable}, ${2:substring}, ${3:replacement} ${4:[,occurrence} ${5:[,begin]})"
+         "CHANGE(${1:variable}, ${2:substring}, ${3:replacement} ${4:[,occurrence} ${5:[,begin]})"
        ],
        "description":"Code snippet for a change function"
     },
     "convert":{
        "prefix" : "convert",
        "body":[
-         "convert(${1:char_list}, ${2:char_repl}, ${3:variable})"
+         "CONVERT(${1:char_list}, ${2:char_repl}, ${3:variable})"
        ],
        "description":"Code snippet for a convert function"
     },
     "index":{
        "prefix" : "index",
        "body":[
-         "index(${1:string}, ${2:substring}, ${3:occurrence})"
+         "INDEX(${1:string}, ${2:substring}, ${3:occurrence})"
        ],
        "description":"Code snippet for an index statement"
     },
     "read":{
        "prefix": "read",
        "body" :[
-          "read ${1:record} from ${2:filevar},${3:rec_id} then",
+          "READ ${1:record} FROM ${2:filevar},${3:rec_id} THEN",
           "\t${4:expression}",
-          "end else",
+          "END ELSE",
           "\t${5:expression}",
           "end"
        ]
@@ -114,9 +114,15 @@
       "bscan":{
          "prefix" : "bscan",
          "body":[
-           "bscan ${1:idx_id} ${2:[,id_list]} from ${3:filevar} ,${4:match_string}",
-           "\tusing '${5:indexname}' [RESET] [BY seq] then | else"
+           "BSCAN ${1:idx_id} ${2:[,id_list]} FROM ${3:filevar} ,${4:match_string}",
+           "\tUSING '${5:indexname}' [RESET] [BY seq] THEN | ELSE"
          ],
          "description":"Code snippet for a bscan statement"
+      },
+      "sb.filevar.s":{
+         "prefix":"call sb.filevar.s",
+         "body":[
+            "CALL SB.FILEVAR.S(${1:fileName},0,${2:filevar},${3:ERR})"
+         ]
       }
 }
