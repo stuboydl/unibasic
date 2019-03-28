@@ -73,7 +73,7 @@
             },
             {
                "name": "storage.type.unibasic",
-               "match": "\\b(?<!\\.)(?i:assign|begin|by|calling|case|commit|continue|debug|dim|dimension|do|end|error|exec|execute|exit|filelock|fileunlock|for|from|go|if|in|isolation|level|lit|literally|locked|loop|next|off|on|perform|recordlockl|recordlocku|release|repeat|return|rollback|step|stop|system|then|transaction|until|using|while)(?!\\.)\\b"
+               "match": "\\b(?<!\\.)(?i:assign|begin|by|calling|case|commit|continue|debug|dim|dimension|do|end|error|exec|execute|exit|filelock|fileunlock|for|from|go|if|in|isolation|level|lit|literally|locked|loop|next|off|on|perform|recordlockl|recordlocku|release|repeat|return|rollback|step|stop|stope|stopm|system|then|transaction|until|using|while)(?!\\.)\\b"
             },
             {
                "name": "keyword.control.unibasic",
