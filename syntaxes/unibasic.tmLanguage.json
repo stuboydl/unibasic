@@ -97,7 +97,7 @@
             {
                "comment": "vector functions",
                "name": "keyword.other.unibasic",
-               "match": "\\s(?i:adds|ands|cats|chars|counts|divs|eqs|fields|fmts|ges|gts|iconvs|ifs|indexs|isnulls|lens|lensdp|les|lts|mods|muls|negs|nes|nots|nums|oconvs|ors|reuse|seqs|spaces|splice|strs|subs|substrings|summation|trims|unichars|uniseqs)(?!\\.)\\b"
+               "match": "\\b(?i:adds|ands|cats|chars|counts|divs|eqs|fields|fmts|ges|gts|iconvs|ifs|indexs|isnulls|lens|lensdp|les|lts|mods|muls|negs|nes|nots|nums|oconvs|ors|reuse|seqs|spaces|splice|strs|subs|substrings|summation|trims|unichars|uniseqs)(?!\\.)\\b"
             },
             {
                "comment": "ab",
