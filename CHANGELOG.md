@@ -1,3 +1,7 @@
+## Version 0.0.5
+- Add function keywords for AMI, BCI, DOM, Sockets, UDO, XML
+- Add $option keywords
+
 ## Version 0.0.4
 - Add snippets
 - Add folding region signifiers - !#region/!#endregion 
