@@ -127,6 +127,6 @@
       },
       "sb.disp.4":{
          "prefix":"call sb.disp(4",
-         "body":["CALL SB.DISP(4,'`$(1:heading)~(@VM:@VM)$(2:message)\\Continue\\0\\RC')"]
+         "body":["CALL SB.DISP(4,'`${1:heading}~(@VM:@VM)${2:message}\\Continue\\0\\RC')"]
       }
 }
