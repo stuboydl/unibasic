@@ -1,3 +1,6 @@
+## Version 0.0.6/7
+- add snippets
+
 ## Version 0.0.5
 - Add function keywords for AMI, BCI, DOM, Sockets, UDO, XML
 - Add $option keywords
