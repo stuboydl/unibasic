@@ -1,30 +1,20 @@
 {
+   "activationEvents": [],
+   "description": "Rocket UniVerse Basic. VS Code Syntax extension",
+   "displayName": "UniBasic",
+   "homepage": "https://github.com/stuboydl/unibasic/blob/master/README.md",
+   "icon": "images/unibasic-icon.png",
+   "license": "MIT",
+   "main": "./out/extension.js",
    "name": "unibasic",
    "publisher": "stuboydl",
-   "displayName": "UniBasic",
-   "description": "Rocket UniVerse Basic. VS Code Syntax extension",
-   "version": "0.0.7",
-   "license": "MIT",
-   "homepage": "https://github.com/stuboydl/unibasic/blob/master/README.md",
-   "repository": {
-      "type": "git",
-      "url": "https://github.com/stuboydl/unibasic"
-   },
+   "version": "0.0.8",
    "bugs": {
       "url": "https://github.com/stuboydl/unibasic/issues"
-   },
-   "galleryBanner": {
-      "color": "#0000FF",
-      "theme": "dark"
-   },
-   "engines": {
-      "vscode": "^1.30.0"
    },
    "categories": [
       "Programming Languages"
    ],
-   "activationEvents": [],
-   "main": "./out/extension.js",
    "contributes": {
       "languages": [
          {
@@ -54,18 +44,29 @@
       ],
       "commands": []
    },
+   "devDependencies": {
+      "@types/mocha": "^7.0.2",
+      "@types/node": "^13.9.3",
+      "tslint": "^6.1.0",
+      "typescript": "^3.8.3",
+      "vscode": "^1.1.36"
+   },
+   "engines": {
+      "vscode": "^1.30.0"
+   },
+   "galleryBanner": {
+      "color": "#0000FF",
+      "theme": "dark"
+   },
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/stuboydl/unibasic"
+   },
    "scripts": {
       "vscode:prepublish": "npm run compile",
       "compile": "tsc -p ./",
       "watch": "tsc -watch -p ./",
       "postinstall": "node ./node_modules/vscode/bin/install",
       "test": "npm run compile && node ./node_modules/vscode/bin/test"
-   },
-   "devDependencies": {
-      "typescript": "^3.5.1",
-      "vscode": "^1.1.34",
-      "tslint": "^5.17.0",
-      "@types/node": "^12.0.5",
-      "@types/mocha": "^5.2.7"
    }
 }

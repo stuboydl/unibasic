@@ -1,4 +1,5 @@
 {
+   "description":"Snippets",
     "if": {
         "prefix": "IF",
         "body": [
@@ -9,14 +10,14 @@
         "description": "Code snippet for an if statement"
     },
     "if/then":{
-       "prefix": "if/then",
+       "prefix": "IF/THEN",
        "body":[
           "IF ${1:condition} THEN ${2:expression}"
        ],
        "description": "Code snippet for an if statement"
     },
-    "if/then/else": {
-        "prefix": "if/then/else",
+    "if/else": {
+        "prefix": "IF/ELSE",
         "body": [
             "IF ${1:condition} THEN",
             "\t${2:expression}",
@@ -27,16 +28,25 @@
         "description": "Code snippet for an if then else statement"
     },
     "else": {
-        "prefix": "else",
+        "prefix": "ELSE",
         "body": [
-            "else",
+            "ELSE",
             "\t${1:expression}",
-            "end"
+            "END"
         ],
         "description": "Code snippet for an else"
     },
-    "end/else": {
-        "prefix": "end else",
+    "then": {
+        "prefix": "THEN",
+        "body": [
+            "THEN",
+            "\t${1:expression}",
+            "END"
+        ],
+        "description": "Code snippet for a then"
+    },
+    "xend/elsex": {
+        "prefix": "xend elsex",
         "body": [
             "END ELSE",
             "\t${1:expression}",
@@ -45,7 +55,7 @@
         "description": "Code snippet for an end else"
     },
     "loop": {
-        "prefix": "loop",
+        "prefix": "LOOP",
         "body": [
             "LOOP WHILE ${1:condition} DO",
             "\t${2:expression}",
@@ -54,7 +64,7 @@
         "description": "Code snippet for a while loop"
     },
     "loop/readnext": {
-        "prefix": "loop/readnext",
+        "prefix": "LOOP/READNEXT",
         "body": [
             "LOOP WHILE READNEXT ID DO",
             "\t${2:expression}",
@@ -63,7 +73,7 @@
         "description": "Code snippet for a while readnext loop"
     },
     "loop/until": {
-        "prefix": "loop/until",
+        "prefix": "LOOP/UNTIL",
         "body": [
             "LOOP UNTIL ${1:expression} DO",
             "\t${2:expression}",
@@ -72,47 +82,72 @@
         "description": "Code snippet for a while loop until"
     },
     "for/next": {
-        "prefix": "for/next",
+        "prefix": "FOR",
         "body": [
-            "FOR ${1:iterator} = 1 TO ${2:maximum}",
+            "${1:MAX} = DCOUNT(${2:VARIABLE.TO.LOOP},@VM)",
+            "FOR ${1:iterator} = 1 TO ${2:MAX}",
             "\t${3:expression}",
             "NEXT ${1:iterator}"
         ],
         "description": "Code snippet for a for next loop"
     },
     "change":{
-       "prefix" : "change",
+       "prefix" : "CHANGE",
        "body":[
          "CHANGE(${1:variable}, ${2:substring}, ${3:replacement} ${4:[,occurrence} ${5:[,begin]})"
        ],
        "description":"Code snippet for a change function"
     },
     "convert":{
-       "prefix" : "convert",
+       "prefix" : "CONVERT",
        "body":[
          "CONVERT(${1:char_list}, ${2:char_repl}, ${3:variable})"
        ],
        "description":"Code snippet for a convert function"
     },
     "index":{
-       "prefix" : "index",
+       "prefix" : "INDEX",
        "body":[
          "INDEX(${1:string}, ${2:substring}, ${3:occurrence})"
        ],
        "description":"Code snippet for an index statement"
     },
     "read":{
-       "prefix": "read",
+       "prefix": "READ",
        "body" :[
           "READ ${1:record} FROM ${2:filevar},${3:rec_id} THEN",
           "\t${4:expression}",
           "END ELSE",
           "\t${5:expression}",
+          "END"
+       ]
+      },
+    "readv":{
+       "prefix": "READV",
+       "body" :[
+          "READV ${1:record} FROM ${2:filevar},${3:rec_id},${4:pos} THEN",
+          "\t${5:expression}",
+          "END ELSE",
+          "\t${6:expression}",
           "end"
        ]
       },
+      "locked":{
+         "prefix": "LOCKED",
+         "body":[
+            "LOCKED",
+            "\tMSG<2> = '${1:message}':${2:rec_id}:' is locked.'",
+            "\tMSG<3> = '${3:Try_Again},${4:Quit}\\0,1\\RC'",
+            "\tISLOCKED = DISP.LOCK.MSG(MSG)",
+            "END THEN",
+            "\t${5:expression}",
+            "END ELSE",
+            "\t${6:expression}",
+            "END"
+         ]
+      },
       "bscan":{
-         "prefix" : "bscan",
+         "prefix" : "BSCAN",
          "body":[
            "BSCAN ${1:idx_id} ${2:[,id_list]} FROM ${3:filevar} ,${4:match_string}",
            "\tUSING '${5:indexname}' [RESET] [BY seq] THEN | ELSE"
@@ -120,13 +155,54 @@
          "description":"Code snippet for a bscan statement"
       },
       "sb.filevar.s":{
-         "prefix":"call sb.filevar.s",
+         "prefix":"CALL SB.FILEVAR.S",
          "body":[
             "CALL SB.FILEVAR.S(${1:fileName},0,${2:filevar},${3:ERR})"
          ]
       },
       "sb.disp.4":{
-         "prefix":"call sb.disp(4",
+         "prefix":"CALL SB.DISP(4",
          "body":["CALL SB.DISP(4,'`${1:heading}~(@VM:@VM)${2:message}\\Continue\\0\\RC')"]
+      },
+      "BEGIN CASE statement": {
+         "prefix": "BEGIN",
+         "body": [
+            "BEGIN CASE",
+            "\tCASE ${1:CONDITION}",
+            "\t\t${2:CODE}",
+            "END CASE"
+         ],
+         "description": "BEGIN CASE statement"
+      },
+      "Add a CASE": {
+         "prefix": "CASE",
+         "body": [
+            "CASE ${1:CONDITION}",
+            "\t${2:CODE}"
+         ],
+         "description": "Add a CASE"
+      },
+      "CALL a subroutine": {
+         "prefix": "CALL",
+         "body": [
+            "CALL ${1:PROGRAM}(${2:PARAMETERS})"
+         ],
+         "description": "CALL a subroutine"
+      },
+      "Convert input for storage": {
+         "prefix": "ICONV",
+         "body": [
+            "ICONV(${1:variable}),'${2:conv}')"
+         ],
+         "description": "Convert input for storage"
+      },
+      "Convert output for storage": {
+         "prefix": "OCONV",
+         "body": [
+            "OCONV(${1:variable}),'${2:conv}')"
+         ],
+         "description": "Convert output for storage"
       }
+
+
 }

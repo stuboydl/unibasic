@@ -3,14 +3,17 @@
    "name": "unibasic",
    "patterns": [
       {
-         "include": "#keywords"
+         "include": "#comments"
       },
       {
          "include": "#strings"
+      },
+      {
+         "include": "#keywords"
       }
    ],
    "repository": {
-      "keywords": {
+      "comments":{
          "patterns": [
             {
                "comment": "normal comments",
@@ -21,8 +24,17 @@
             {
                "comment": "inline comment",
                "name": "comment.line.asterisk.unibasic",
-               "match": ";\\s*(\\!.*|\\*.*)"
+               "match": ";\\s*(\\!.*|\\*.*|(?i)rem\\s.*)"
             },
+            {
+               "comment": "get back to it later",
+               "name": "meta.comment.fixme.unibasic",
+               "match": "\\b(?i:fixme|todo):\\b"
+            }
+         ]
+      },
+      "keywords": {
+         "patterns": [
             {
                "comment": "operators",
                "name": "keyword.operator.unibasic",
@@ -31,7 +43,7 @@
             {
                "comment": "comparitors",
                "name": "keyword.operator.unibasic",
-               "match": "\\b(?i:and|or|not|eq|lt|gt|ne|le|ge)\\b"
+               "match": "\\b(?i:and|or|not|eq|lt|gt|ne|le|ge|match|matches)\\b"
             },
             {
                "comment": "invoke general internal/external subroutine",
@@ -47,7 +59,7 @@
             },
             {
                "comment": "internal subroutine label",
-               "match": "^(?i)([A-Z_\\.0-9]*:)[\\s|;]*($|\\!.*|\\*.*)",
+               "match": "^(?i)([A-Z_\\.0-9]*:|[0-9]+)[\\s|;]*($|\\!.*|\\*.*)",
                "captures": {
                   "1": {
                      "name": "entity.name.class.unibasic"
@@ -102,7 +114,7 @@
             {
                "comment": "options",
                "name": "keyword.control.unibasic",
-               "match": "\\b(?<!\\.)(?i:default|in2|information|pick|piopen|reality|case|comp\\.precision|count\\.ovlp|end\\.warn|exec\\.eq\\.perf|extra\\.delim|for\\.incr\\.bef|format\\.oconv|fselect|header\\.brk|header\\.date|header\\.eject|in2\\.substr|info\\.abort|info\\.convert|info\\.enter|info\\.include|info\\.locate|info\\.marks|info\\.mod|input\\.else|inputat|int\\.precision|locate\\.r83|no\\.case|no\\.reselect|no\\.return\\.warn|ongo\\.range|pclose\\.all|perf\\.eq\\.exec|piopen\\.execute|piopen\\.include|piopen\\.matread|piopen\\.selidx|radians|raw\\.output|read\\.retain|real\\.substr|rnext\\.expl|seq\\.255|static\\.dim|stop\\.msg|supp\\.data\\.echo|time\\.millisecond|ult\\.format|use\\.errmsg|var\\.select|vec\\.math|wide\\.if)(?!\\.)\\b"
+               "match": "\\b(?<!\\.)(?i:all|default|in2|information|pick|piopen|reality|case|comp\\.precision|count\\.ovlp|end\\.warn|exec\\.eq\\.perf|extra\\.delim|for\\.incr\\.bef|format\\.oconv|fselect|header\\.brk|header\\.date|header\\.eject|in2\\.substr|info\\.abort|info\\.convert|info\\.enter|info\\.include|info\\.locate|info\\.marks|info\\.mod|input\\.else|inputat|int\\.precision|locate\\.r83|no\\.case|no\\.reselect|no\\.return\\.warn|ongo\\.range|pclose\\.all|perf\\.eq\\.exec|piopen\\.execute|piopen\\.include|piopen\\.matread|piopen\\.selidx|radians|raw\\.output|read\\.retain|real\\.substr|rnext\\.expl|seq\\.255|static\\.dim|stop\\.msg|supp\\.data\\.echo|time\\.millisecond|ult\\.format|use\\.errmsg|var\\.select|vec\\.math|wide\\.if)(?!\\.)\\b"
             },
             {
                "comment": "vector functions",
@@ -137,12 +149,12 @@
             {
                "comment": "mno",
                "name": "storage.type.unibasic",
-               "match": "\\b(?<!\\.)(?i:maketimestamp|mat|matbuild|match|matches|matchfield|matparse|matread|matreadl|matreadu|matwrite|matwriteu|maximum|minimum|mod|msleep|nap|neg|nobuf|null|num|oconv|open|opencheck|opendev|openpath|openseq|openser|osbread|osbwrite|osclose|osdelete|osopen|osread|oswrite|out)(?!\\.)\\b"
+               "match": "\\b(?<!\\.)(?i:maketimestamp|mat|matbuild|matchfield|matparse|matread|matreadl|matreadu|matwrite|matwriteu|maximum|minimum|mod|msleep|nap|neg|nobuf|null|num|oconv|open|opencheck|opendev|openpath|openseq|openser|osbread|osbwrite|osclose|osdelete|osopen|osread|oswrite|out)(?!\\.)\\b"
             },
             {
                "comment": "pqr",
                "name": "storage.type.unibasic",
-               "match": "\\b(?<!\\.)(?i:page|passlist|pause|pcperform|precision|print|printer|printerr|procread|procwrite|prompt|putenv|pwr|quote|raise|randomize|read|readblk|readl|readlist|readnext|readselect|readseq|readt|readu|readv|readvl|readvu|readxml|real|recordlocked|remove|replace|returning|revremove|rewind|right|rnd|rqm|rtndata|rtnlist|rpc\\.call|rpc\\.connect|rpc\\.disconnect)(?!\\.)\\b"
+               "match": "\\b(?<!\\.)(?i:page|passlist|pause|pcperform|precision|print|printer|printerr|procread|procwrite|prompt|putenv|pwr|quote|raise|randomize|read|readblk|readl|readlist|readnext|readselect|readseq|readt|readu|readv|readvl|readvu|readxml|real|recordlocked|rem|remove|replace|returning|revremove|rewind|right|rnd|rqm|rtndata|rtnlist|rpc\\.call|rpc\\.connect|rpc\\.disconnect)(?!\\.)\\b"
             },
             {
                "comment": "st",

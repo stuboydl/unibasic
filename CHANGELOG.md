@@ -1,3 +1,8 @@
+## Version 0.0.8
+- add snippets
+- add icon
+- update dependencies
+
 ## Version 0.0.6/7
 - add snippets
 
@@ -7,7 +12,7 @@
 
 ## Version 0.0.4
 - Add snippets
-- Add folding region signifiers - !#region/!#endregion 
+- Add folding region signifiers - !#region/!#endregion
 
 ## Version 0.0.3
 - Add most of the missing UV verbs and reorganise the tmLanguage file
