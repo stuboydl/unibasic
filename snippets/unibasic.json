@@ -1,10 +1,10 @@
 {
-   "description":"Snippets",
+   "description": "Snippets",
     "if": {
         "prefix": "IF",
         "body": [
             "IF ${1:condition} THEN",
-            "   ${2:expression}",
+            "\t${2:expression}",
             "END"
         ],
         "description": "Code snippet for an if statement"
@@ -132,18 +132,20 @@
           "end"
        ]
       },
-      "locked":{
-         "prefix": "LOCKED",
+      "readu":{
+         "prefix": "READU",
          "body":[
-            "LOCKED",
-            "\tMSG<2> = '${1:message}':${2:rec_id}:' is locked.'",
-            "\tMSG<3> = '${3:Try_Again},${4:Quit}\\0,1\\RC'",
-            "\tISLOCKED = DISP.LOCK.MSG(MSG)",
-            "END THEN",
-            "\t${5:expression}",
-            "END ELSE",
-            "\t${6:expression}",
-            "END"
+            "LOOP",
+            "\tISLOCKED = @FALSE",
+            "\tREADU ${1:rec} FROM ${2:filvar},${3:rec_id} LOCKED",
+            "\t\tMSG = @AM:'${4:message}':${3:rec_id}:' is locked.'",
+            "\t\tISLOCKED = DISP.LOCK.MSG(MSG)",
+            "\tEND THEN",
+            "\t\t${5:expression}",
+            "\tEND ELSE",
+            "\t\t${6:expression}",
+            "\tEND",
+            "WHILE ISLOCKED DO REPEAT"
          ]
       },
       "bscan":{
@@ -164,7 +166,7 @@
          "prefix":"CALL SB.DISP(4",
          "body":["CALL SB.DISP(4,'`${1:heading}~(@VM:@VM)${2:message}\\Continue\\0\\RC')"]
       },
-      "BEGIN CASE statement": {
+      "begin case statement": {
          "prefix": "BEGIN",
          "body": [
             "BEGIN CASE",
@@ -174,7 +176,7 @@
          ],
          "description": "BEGIN CASE statement"
       },
-      "Add a CASE": {
+      "add a case": {
          "prefix": "CASE",
          "body": [
             "CASE ${1:CONDITION}",
@@ -182,21 +184,21 @@
          ],
          "description": "Add a CASE"
       },
-      "CALL a subroutine": {
+      "call a subroutine": {
          "prefix": "CALL",
          "body": [
             "CALL ${1:PROGRAM}(${2:PARAMETERS})"
          ],
          "description": "CALL a subroutine"
       },
-      "Convert input for storage": {
+      "convert input for storage": {
          "prefix": "ICONV",
          "body": [
             "ICONV(${1:variable}),'${2:conv}')"
          ],
          "description": "Convert input for storage"
       },
-      "Convert output for storage": {
+      "convert output for storage": {
          "prefix": "OCONV",
          "body": [
             "OCONV(${1:variable}),'${2:conv}')"
