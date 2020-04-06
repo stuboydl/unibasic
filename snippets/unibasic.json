@@ -151,7 +151,7 @@
       "bscan":{
          "prefix" : "BSCAN",
          "body":[
-           "BSCAN ${1:idx_id} ${2:[,id_list]} FROM ${3:filevar} ,${4:match_string}",
+           "BSCAN ${1:idx_id} ${2:[,file_id_list]} FROM ${3:filevar} ,${4:idx_match}",
            "\tUSING '${5:indexname}' [RESET] [BY seq] THEN | ELSE"
          ],
          "description":"Code snippet for a bscan statement"
