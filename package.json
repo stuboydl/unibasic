@@ -8,7 +8,7 @@
    "main": "./out/extension.js",
    "name": "unibasic",
    "publisher": "stuboydl",
-   "version": "0.0.8",
+   "version": "0.0.9",
    "bugs": {
       "url": "https://github.com/stuboydl/unibasic/issues"
    },

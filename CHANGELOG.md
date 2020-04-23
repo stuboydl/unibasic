@@ -1,3 +1,6 @@
+## Version 0.0.9
+- update syntax
+
 ## Version 0.0.8
 - add snippets
 - add icon
