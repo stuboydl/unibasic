@@ -94,7 +94,7 @@
             {
                "comment": "other commands",
                "name": "keyword.control.unibasic",
-               "match": "^\\s*(?i:assign|chain|com|common|declare|deffun|equ|equate|[\\#|\\$]?include)(?!\\.)\\b"
+               "match": "^\\s*(?i:assign|chain|com|common|declare gci|deffun|equ|equate|[\\#|\\$]?include)(?!\\.)\\b"
             },
             {
                "comment": "$ directives",
