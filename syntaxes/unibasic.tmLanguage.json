@@ -139,7 +139,7 @@
             {
                "comment": "ijkl",
                "name": "storage.type.unibasic",
-               "match": "\\b(?<!\\.)(?i:icheck|iconv|ilprompt|index|indices|inmat|input|inputclear|inputdisp|inputdp|inputerr|inputif|inputnull|inputtrap|ins|insert|int|isalnumisdigit|isalpha|iscntrl|islower|isnull|isprint|isspace|isupper|itype|keyedit|keyexit|keyin|keytrap|latin1|left|len|lendp|let|ln|localdatelocaltime|locate|lock|lowcase|lower)(?!\\.)\\b"
+               "match": "\\b(?<!\\.)(?i:icheck|iconv|ilprompt|index|indices|inmat|input|inputclear|inputdisp|inputdp|inputerr|inputif|inputnull|inputtrap|ins|insert|int|isnull|itype|keyedit|keyexit|keyin|keytrap|latin1|left|len|lendp|let|ln|localdatelocaltime|locate|lock|lowcase|lower)(?!\\.)\\b"
             },
             {
                "comment": "mno",
@@ -162,6 +162,31 @@
                "match": "\\b(?<!\\.)(?i:udtexecute|unassigned|unichar|uniseq|unlock|upcase|uprint|userinfo|weof|weofseq|write|writeblk|writelist|writeseq|writeseqf|writet|writeu|writev|writevu|writexml|xlate|xtd)(?!\\.)\\b"
             },
             {
+               "comment": "bci",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:ClearDiagnostics|GetDiagnostics|SetDiagnostics|SQLAllocConnect|SQLAllocEnv|SQLAllocStmt|SQLBindCol|SQLBindCol|SQLBindParameter|SQLCancel|SQLColAttributes|SQLColumns|SQLConnect|SQLDescribeCol|SQLDisconnect|SQLError|SQLExecDirect|SQLExecute|SQLFetch|SQLFreeConnect|SQLFreeEnv|SQLFreeStmt|SQLGetInfo|SQLGetTypeInfo|SQLNumParams|SQLNumResultCols|SQLParamOptions|SQLPrepare|SQLRowCount|SQLSetConnectOption|SQLSetParam|SQLSpecialColumns|SQLStatistics|SQLTables|SQLTransact)(?!\\.)\\b"
+            },
+            {
+               "comment": "dom",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:XDOMOpen|XDOMCreateNode|XDOMWrite|XDOMClose|XDOMValidate|XDOMLocate|XDOMLocateNode|XDOMCreateNode|XDOMEvaluate|XDOMRemove|XDOMAppend|XDOMInsert|XDOMReplace|XDOMAddChild|XDOMClone|XDOMTransform|XDOMGetNodeValue|XDOMGetNodeName|XDOMGetNodeType|XDOMGetAttribute|XDOMGetOwnerDocument|XDOMGetUserData|XDOMSetNodeValue|XDOMSetUserData)(?!\\.)\\b"
+            },
+            {
+               "comment": "python",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:PyCall|PyCallFunction|PyCallMethod|PyGetAttr|PyImport|PySetAttr)(?!\\.)\\b"
+            },
+            {
+               "comment": "soap",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:SOAPSetDefault|SOAPGetDefault|SOAPCreateRequest|SOAPSetParameters|SOAPSetRequestHeader|SOAPSetRequestBody|SOAPSetRequestContent|SOAPRequestWrite|SOAPSubmitRequest|SOAPGetResponseHeader|SOAPGetFault|protocolLogging)(?!\\.)\\b"
+            },
+            {
+               "comment": "sockets",
+               "name": "storage.type.unibasic",
+               "match": "\\b(?<!\\.)(?i:AcceptConnection|AddAuthenticationRule|AddCertificate|AddRequestParameter|AnalyzeCertificate|CloseSocket|CreateCertification|CreateCertRequest|CreateRequest|CreateSecureRequest|CreateSecurityContext|GenerateKey|GetCipherSuite|GetHTTPDefault|GetSocketErrorMessage|GetSocketInformation|GetSocketOptions|InitSecureServerSocket|InitServerSocket|LoadSecurityContext|OpenSecureSocket|OpenSocket|ProtocolLogging|ReadSocket|SaveSecurityContext|SetAuthenticationDepth|SetCipherSuite|SetClientauthentication|SetHTTPDefault|SetLocale|SetPrivateKey|SetRandomSeed|SetRequestHeader|SetSocketOptions|ShowSecurityContext|Signature|SubmitRequest|WriteSocket)(?!\\.)\\b"
+            },
+            {
                "comment": "udo",
                "name": "storage.type.unibasic",
                "match": "\\b(?<!\\.)(?i:UDOArrayAppendItem|UDOArrayDeleteItem|UDOArrayGetItem|UDOArrayGetNextItem|UDOArrayGetSize|UDOArrayInsertItem|UDOArraySetItem|UDOClone|UDOCreate|UDODeleteProperty|UDOFree|UDOGetLastError|UDOGetNextProperty|UDOGetOption|UDOGetProperty|UDOGetPropertyNames|UDOGetType|UDOIsTypeOf|UDORead|UDOSetOption|UDOSetProperty|UDOWrite)(?!\\.)\\b"
@@ -170,26 +195,6 @@
                "comment": "xml/ami",
                "name": "storage.type.unibasic",
                "match": "\\b(?<!\\.)(?i:closeXMLData|openXMLData|prepareXML|readXMLData|releaseXML|xmlError|XMLGetError|XMLExecute|XMLtoDB|amInitialize|amReceiveMsg|amReceiveRequest|amSendMsg|amSendRequest|amSendResponse|amTerminate|XMAPOpen|XMAPClose|XMAPCreate|XMAPReadNext|XMAPAppendRec|XMAPToXMLDoc)(?!\\.)\\b"
-            },
-            {
-               "comment": "dom",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<!\\.)(?i:XDOMOpen|XDOMCreateNode|XDOMWrite|XDOMClose|XDOMValidate|XDOMLocate|XDOMLocateNode|XDOMCreateNode|XDOMEvaluate|XDOMRemove|XDOMAppend|XDOMInsert|XDOMReplace|XDOMAddChild|XDOMClone|XDOMTransform|XDOMGetNodeValue|XDOMGetNodeName|XDOMGetNodeType|XDOMGetAttribute|XDOMGetOwnerDocument|XDOMGetUserData|XDOMSetNodeValue|XDOMSetUserData)(?!\\.)\\b"
-            },
-            {
-               "comment": "bci",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<!\\.)(?i:ClearDiagnostics|GetDiagnostics|SetDiagnostics|SQLAllocConnect|SQLAllocEnv|SQLAllocStmt|SQLBindCol|SQLBindCol|SQLBindParameter|SQLCancel|SQLColAttributes|SQLColumns|SQLConnect|SQLDescribeCol|SQLDisconnect|SQLError|SQLExecDirect|SQLExecute|SQLFetch|SQLFreeConnect|SQLFreeEnv|SQLFreeStmt|SQLGetInfo|SQLGetTypeInfo|SQLNumParams|SQLNumResultCols|SQLParamOptions|SQLPrepare|SQLRowCount|SQLSetConnectOption|SQLSetParam|SQLSpecialColumns|SQLStatistics|SQLTables|SQLTransact)(?!\\.)\\b"
-            },
-            {
-               "comment": "sockets",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<!\\.)(?i:AcceptConnection|AddAuthenticationRule|AddCertificate|AddRequestParameter|AnalyzeCertificate|CloseSocket|CreateCertification|CreateCertRequest|CreateRequest|CreateSecureRequest|CreateSecurityContext|GenerateKey|GetCipherSuite|GetHTTPDefault|GetSocketErrorMessage|GetSocketInformation|GetSocketOptions|InitSecureServerSocket|InitServerSocket|LoadSecurityContext|OpenSecureSocket|OpenSocket|ProtocolLogging|ReadSocket|SaveSecurityContext|SetAuthenticationDepth|SetCipherSuite|SetClientauthentication|SetHTTPDefault|SetLocale|SetPrivateKey|SetRandomSeed|SetRequestHeader|SetSocketOptions|ShowSecurityContext|Signature|SubmitRequest|WriteSocket)(?!\\.)\\b"
-            },
-            {
-               "comment": "soap",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<!\\.)(?i:SOAPSetDefault|SOAPGetDefault|SOAPCreateRequest|SOAPSetParameters|SOAPSetRequestHeader|SOAPSetRequestBody|SOAPSetRequestContent|SOAPRequestWrite|SOAPSubmitRequest|SOAPGetResponseHeader|SOAPGetFault|protocolLogging)(?!\\.)\\b"
             },
             {
                "comment": "deprecated",

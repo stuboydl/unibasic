@@ -7,7 +7,7 @@ Conformed and updated for UniBasic (principally UniVerse).
 
 The intention is to continuously improve this by adding formatting and other features along the way.
 
-Version 1.0
+Version 0
 * Imported Mallek's package for Pick for VS Code
 * Updated syntaxes for UniVerse
 * updated README
