@@ -104,7 +104,7 @@
             {
                "comment": "@ commands",
                "name": "constant.character.escape.unibasic",
-               "match": "(@(?i:abort\\.code|account|am|ans|authorization|command|command\\.stack|conv|crthigh|crtwide|data\\.pending|date|day|dict|false|file\\.name|filename|fm|format|hdbc|header|henv|hstmt|id|im|isolation|level|logname|lptrhigh|lptrwide|month|mv|nb|nd|new|ni|ns|null|null\\.str|nv|old|option|parasentence|path|reccount|record|recur0|recur1|recur2|recur3|recur4|schema|selected|sentence|sm|sql\\.code|sql\\.date|sql\\.error|sql\\.state|sql\\.time|sql\\.warning|sqlproc\\.name|sqlproc\\.tx\\.level|stdfil|svm|sys\\.bell|system\\.return\\.code|system\\.set|term\\.type|time|tm|transaction|transaction\\.id|transaction\\.level|true|tty|user0|user1|user2|user3|user4|userno|user\\.no|user\\.return\\.code|vm|who|year|year4))(?!\\.)\\b"
+               "match": "(@(?i:abort\\.code|account|am|ans|authorization|command|command\\.stack|conv|crthigh|crtwide|data\\.pending|date|day|dict|false|file\\.name|filename|fm|format|hdbc|header|henv|hstmt|id|im|isolation|level|logname|lptrhigh|lptrwide|month|mv|nb|nd|new|ni|ns|null|null\\.str|nv|old|option|parasentence|path|pyexceptionmsg|pyexceptiontraceback|pyexceptiontype|reccount|record|recur0|recur1|recur2|recur3|recur4|schema|selected|sentence|sm|sql\\.code|sql\\.date|sql\\.error|sql\\.state|sql\\.time|sql\\.warning|sqlproc\\.name|sqlproc\\.tx\\.level|stdfil|svm|sys\\.bell|system\\.return\\.code|system\\.set|term\\.type|time|tm|transaction|transaction\\.id|transaction\\.level|true|tty|user0|user1|user2|user3|user4|userno|user\\.no|user\\.return\\.code|vm|who|year|year4))(?!\\.)\\b"
             },
             {
                "comment": "options",
