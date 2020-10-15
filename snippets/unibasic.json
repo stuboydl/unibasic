@@ -159,7 +159,7 @@
       "sb.filevar.s":{
          "prefix":"CALL SB.FILEVAR.S",
          "body":[
-            "CALL SB.FILEVAR.S(${1:fileName},0,${2:filevar},${3:ERR})"
+            "CALL SB.FILEVAR.S('${1:fileName}',0,${2:filevar},${3:ERR})"
          ]
       },
       "sb.disp.4":{

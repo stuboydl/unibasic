@@ -1,3 +1,6 @@
+## Version 0.1.0
+- add SBXA syntax highlighting
+
 ## Version 0.0.9
 - update syntax
 

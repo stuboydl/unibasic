@@ -197,6 +197,11 @@
                "match": "\\b(?<!\\.)(?i:closeXMLData|openXMLData|prepareXML|readXMLData|releaseXML|xmlError|XMLGetError|XMLExecute|XMLtoDB|amInitialize|amReceiveMsg|amReceiveRequest|amSendMsg|amSendRequest|amSendResponse|amTerminate|XMAPOpen|XMAPClose|XMAPCreate|XMAPReadNext|XMAPAppendRec|XMAPToXMLDoc)(?!\\.)\\b"
             },
             {
+               "comment": "sbxa",
+               "name":"variable.other.readwrite.sbxa",
+               "match":"\\b(?<!\\.)(?i:record|key|work|other.rec|lf.info|cnt|action|line|mainfile|f.file|orig.rec|lock.key|head|scr.image|status.line|box.cords|outval|outval.flags|f.indx|f.indx.defns|gui|guires|userdata|screenno|xui|service.info|express.vars|debug.logging|user.debug|free.temp|value|rtn.flag|param|refresh|menu.opt|proc.name|level.no|files.opened|filevar|parms|sbparm|other|sbc.parm|sb.cont|control|port|sysid|acnt.name|term.defn|print.defn|pass.defn|user.id|user.keys|pcterm|f.md|f.dmcont|f.dmdriv|f.pass|f.cont|f.proc|f.menu|f.dmproc|f.defn|f.g.proc|f.g.menu|f.g.defn|f.dmsysdefn|bt.node|bt.lev.no|bt.id|bt.pos|guidata|sbclient|res1|res2|res3|res4|xuidata)(?!\\.)\\b"
+            },
+            {
                "comment": "deprecated",
                "name":"invalid.illegal.unibasic",
                "match":"\\b(?<!\\.)(?i)(go|go\\s{0,1}to)(?!\\.)\\b"
