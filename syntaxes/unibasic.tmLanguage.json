@@ -43,7 +43,7 @@
             {
                "comment": "comparitors",
                "name": "keyword.operator.unibasic",
-               "match": "\\b(?i:and|or|not|eq|lt|gt|ne|le|ge|match|matches)\\b"
+               "match": "\\b(?i:arg(?=\\.)|and|or|not|eq|lt|gt|ne|le|ge|match|matches)\\b"
             },
             {
                "comment": "invoke general internal/external subroutine",
@@ -129,12 +129,12 @@
             {
                "comment": "de",
                "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:data|date|dcount|decrypt|defc|defce|del|delete|deletelist|deleteu|descrinfo|digest|disabledec|display|div|downcase|dquote|dround|dtx|ebcdic|echo|else|enabledec|encode|encrypt|enter|eof\\(arg\\.\\)|ereplace|errmsg|exchange|exp|extract)(?![\\%\\.\\_])\\b"
+               "match": "\\b(?<![\\%\\.\\_])(?i:data|date|dcount|decrypt|defc|defce|del|delete|deletelist|deleteu|descrinfo|digest|disabledec|display|div|downcase|dquote|dround|dtx|ebcdic|echo|else|enabledec|encode|encrypt|enter|eof|ereplace|errmsg|exchange|exp|extract)(?![\\%\\.\\_])\\b"
             },
             {
                "comment": "fgh",
                "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:fadd|fdiv|ffix|fflt|field|fieldstore|fileinfo|find|findstr|fix|flush|fmt|fmtdp|fmtsdp|fmul|fold|folddp|footing|format|formlist|fsub|get|get\\(arg\\.\\)|getcwdgetenv|getlist|getlocale|getrem|getusergroup|getx|group|groupstore|heading|headinge|headingn|hush)(?![\\%\\.\\_])\\b"
+               "match": "\\b(?<![\\%\\.\\_])(?i:fadd|fdiv|ffix|fflt|field|fieldstore|fileinfo|find|findstr|fix|flush|fmt|fmtdp|fmtsdp|fmul|fold|folddp|footing|format|formlist|fsub|get|getcwdgetenv|getlist|getlocale|getrem|getusergroup|getx|group|groupstore|heading|headinge|headingn|hush)(?![\\%\\.\\_])\\b"
             },
             {
                "comment": "ijkl",
@@ -154,7 +154,7 @@
             {
                "comment": "st",
                "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:sadd|scmp|sdiv|seek|seek\\(arg\\.\\)|select|selecte|selectindex|selectinfo|selectn|selectv|send|sentence|seq|setting|set|setrem|sin|sinh|sleep|smul|sort|soundex|space|sqrt|squote|sselect|sselectn|sselectv|ssub|start|status|str|subr|sum|swap|tabstop|tan|tanh|terminfo|time|timedate|timeout|tparm|tprint|trans|trim|trimb|trimbs|trimf|trimfs|ttyctl|ttyget|ttyset)(?![\\%\\.\\_])\\b"
+               "match": "\\b(?<![\\%\\.\\_])(?i:sadd|scmp|sdiv|seek|select|selecte|selectindex|selectinfo|selectn|selectv|send|sentence|seq|setting|set|setrem|sin|sinh|sleep|smul|sort|soundex|space|sqrt|squote|sselect|sselectn|sselectv|ssub|start|status|str|subr|sum|swap|tabstop|tan|tanh|terminfo|time|timedate|timeout|tparm|tprint|trans|trim|trimb|trimbs|trimf|trimfs|ttyctl|ttyget|ttyset)(?![\\%\\.\\_])\\b"
             },
             {
                "comment": "uvwxyz",
