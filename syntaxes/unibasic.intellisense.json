@@ -1,6 +1,7 @@
 {
    "Language": {
       "Type": "unibasic",
+      "descripion":"<<TODO>>This file needs to be integrated into unibasic intellisense help.",
       "Keywords": [
          {
             "key": "for",

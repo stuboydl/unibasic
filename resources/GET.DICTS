@@ -1,0 +1,288 @@
+program GET.DICTS
+$Copyright Copyleft 2020 Stuboydl NO LIABILITY ACCEPTED for your use of this program.
+* example unibasic program to find changes in dictionaries to update source control (git)
+* NB This program has not been compiled or tested and is intended as an example ONLY.
+* NB be aware U2 doesn't play well with some Windows names restrictions/conventions when moving from hashed file to OS folder (type 19).
+*    See GetWinSafeName and GetUVSafeName gosubs below.
+*    eg "myitem." will have the trailing dot stripped when writing to windows, wheras "myItem*" will be converted to "myItem%A".
+*    eg items starting with "aux.", "con.", etc. will fail in type 19 files. eg an item called PRN.LABEL cannot be saved as a windows item!
+
+   thisAcnt = downcase(@who)
+   get(arg.) isLive else isLive = @false
+
+   gosub OpenFiles
+   crt @(-1):'- Checking dictionaries and VOC for changes, mode:':if isLive then '**LIVE**' else 'Check only'
+   crt '-----------------------------------------'
+   prtRow = 0
+   recCnt = 0
+   totCnt = 0
+   upList = ''
+
+   gosub CheckDictOrphans:
+   gosub CheckDictChanges:
+   gosub CheckVocChanges:
+   writelist upList ON '$UPLIST'
+   crt 'changes saved in &SAVEDLISTS&,$UPLIST'
+stop
+
+OpenFiles:
+   open 'ARCONTROL'     to arcontrol   else stop
+   open 'SOURCE.DICTS'  to sourceDicts else stop
+   open 'SOURCE.VOC'    to sourceVoc   else stop
+   open 'VOC'           to voc         else stop
+return
+
+CheckDictOrphans:
+   lstFnm  = ''
+   prtRow += 2
+   crt @(0,prtRow):'- Checking orphans for removal from ':thisAcnt
+   prtRow += 2
+   exec 'SSELECT SOURCE.DICTS IF ACCOUNT = ':quote(thisAcnt) capturing cap
+   loop while readnext @id do
+      recordId = @id
+      fileName = recordId['=',2,1]
+      fileId   = recordId['=',3,9]
+      if fileName # lstFnm then
+         open 'dict',fileName to dictFile then lstFnm = fileName else dictFile = ''
+      end
+      if fileinfo(dictFile,0) then
+         readv z from dictFile,fileId,0 else
+            recCnt += 1
+            crt @(0,prtRow):@(-4):recCnt,fileName:
+            crt @(0,prtRow+1):@(-4):recCnt,fileId:
+            upList<-1> = 'dif=>':@id:',':fileId
+            if isLive then delete sourceDicts,@id
+         end
+      end else
+         crt @(0,prtRow):@(-4):recCnt,fileName:
+         crt @(0,prtRow+1):@(-4):recCnt,fileId:
+         upList<-1> = 'din=>':@id:',':fileId
+         if isLive then delete sourceDicts,@id
+      end
+   repeat
+   if recCnt then prtRow += 2
+   totCnt += recCnt
+   crt @(0,prtRow):recCnt:' orphan records removed'
+return
+
+CheckDictChanges:
+   prtRow += 2
+   crt @(0,prtRow):'- Checking changes for add/update'
+   prtRow += 2
+   recCnt  = 0
+   * add criteria to select files you are interested in and exclude those you are not interested in
+   exec 'SSELECT VOC IF F1 LIKE "F..." AND any other required criteria' rtnlist listA capturing cap
+   loop while readnext fileName from listA do
+      open 'dict',fileName to dictFile then
+         crt @(0,prtRow):@(-4):' checking ':fileName:
+         gosub CheckDictionary:
+      end
+   repeat
+   totCnt += recCnt
+   crt @(0,prtRow):recCnt:' records updated':
+return
+
+CheckDictionary:
+   select dictFile to listB
+   loop while readnext dictId from listB do
+      begin case
+      case fileName[7] = 'CONTROL' and dictId[1,1] = '$' ;* ignr
+      case dictId match '0X"FP"1N':@vm:'0X"FP"1N".GUI"':@vm:'0X"FP"1N".TXT"':@vm:'0X"FP"1N".XUI"':@vm:'0X"FP"1N".XAML"':@vm:'"$DUMMY"0X' ;* ignr
+      case dictId = '@EMPTY.NULL' ;* ignr
+      case @false ;*any other ignore criteria
+      case @true
+         read dr from dictFile,dictId then
+            sourceId = thisAcnt:'=':fileName:'=':dictId ;* check for GetWinSafeName
+            read tdr from sourceDicts,sourceId else tdr = '!!-!!'
+            if dr<1,1>[' ',1,1]  = 'I' then dr  = dr[@am,1,9]
+            * if tdr<1,1>[' ',1,1] = 'I' then tdr = tdr[@am,1,9]
+            if tdr # dr then
+               recCnt += 1
+               crt @(0,prtRow+1):@(-4):recCnt,sourceId:
+               crt recCnt,sourceId
+               if tdr = '!!-!!' then upList<-1> = 'new=>':sourceId:',':dictId else upList<-1> = 'upd=>':sourceId:',':dictId
+               if isLive then write dr on sourceDicts,sourceId
+            end
+         end
+      end case
+   repeat
+   * crt @(0,prtRow+2):recCnt:' records updated'
+return
+
+CheckVocChanges:
+   prtRow += 2
+   crt @(0,prtRow):'- Checking VOC for orphans':
+   recCnt = 0
+   exec 'SSELECT SOURCE.VOC IF ACCOUNT = "':thisAcnt:'"' capturing cap
+   loop while readnext @id do
+      recordId = @id ;* check for GetUVSafeName
+      fileName = recordId['=',2,1]
+      fileId   = recordId['=',3,9]
+      readv z from voc,fileId,0 else
+         recCnt += 1
+         crt @(0,prtRow+1):@(-4):recCnt,fileId:
+         upList<-1> = 'dvo=>':@id:',':fileId
+         if isLive then delete sourceVoc,@id
+      end
+   repeat
+   prtRow += 2
+   totCnt += recCnt
+   crt @(0,prtRow):recCnt:' orphans removed'
+
+   prtRow += 2
+   crt @(0,prtRow):'- Checking VOC for changes':
+   recCnt = 0
+   * add criteria for VOC item selection
+   exec 'SELECT VOC IF @ID # "RELLEVEL" AND @ID UNLIKE "QF..." any other criteria ' capturing cap
+   loop while readnext vid do
+      read vocRec from voc,vid then
+         sourceId = thisAcnt:'=VOC=':vid ;* GetWinSafeName
+         read srcRec from sourceVoc,sourceId else srcRec = '!!-!!'
+         if vocRec # srcRec then
+            recCnt += 1
+            crt @(0,prtRow+1):@(-4):recCnt,@id:
+            if srcRec = '!!-!!' then upList<-1> = 'voc=>':sourceId:',':vid
+            if isLive then write vocRec on sourceVoc,sourceId
+         end
+      end
+   repeat
+   prtRow += 2
+   totCnt += recCnt
+   crt @(0,prtRow):recCnt:' records updated'
+return
+
+GetUVSafeName:
+   * edge cases not automagically transliterated by UV
+   * fix win names (EG picked up from git list) to UV safe.
+   * | This character...          |Maps to...
+   * -------------------------------------------
+   * | empty filename             |%
+   * | %                          |%%
+   * | *                          |%A
+   * | \                          |%B
+   * | :                          |%C
+   * | "                          |%D
+   * | >                          |%G
+   * | <                          |%L
+   * | ?                          |%Q
+   * | /                          |%S
+   * | | (vertical bar)           |%V
+   * | ^(caret)                   |^^
+   * | ASCII 1 through ASCII 26   |^A through ^Z
+   * | ASCII 27 through ASCII 31  |^1 through ^5
+
+   rv = @id
+   if params[',',2,1] then ;* only do these conversion for special cases (eg reading a git log)
+      if rv = '%' then rv = '' else
+         if index(rv, '%', 1) then
+            if index(rv,'%A',1) then rv = change(rv,'%A','*')
+            if index(rv,'%B',1) then rv = change(rv,'%B','\')
+            if index(rv,'%C',1) then rv = change(rv,'%C',':')
+            if index(rv,'%D',1) then rv = change(rv,'%D','"')
+            if index(rv,'%G',1) then rv = change(rv,'%G','>')
+            if index(rv,'%L',1) then rv = change(rv,'%L','<')
+            if index(rv,'%Q',1) then rv = change(rv,'%Q','?')
+            if index(rv,'%S',1) then rv = change(rv,'%S','/')
+            if index(rv,'%V',1) then rv = change(rv,'%V','|')
+            if index(rv,'%%',1) then rv = change(rv,'%%','%')
+         end
+         if index(rv,'^',1) then
+            if rv match '0X^1A0X' then
+               clean = @false
+               o = rv
+               rv = ''
+               max = len(o)
+               for i = 1 to max until clean
+                  if o match '^1A0X' then
+                     z = matchfield(o,'^1A0X',2)
+                     z = seq(z)
+                     if z > 64 and z < 91 then
+                        rv := char(z-64)
+                     end else
+                        rv := o[1,2]
+                     end
+                     o = o[3,999]
+                  end else
+                     rv := o[1,1]
+                     o = o[2,999]
+                  end
+                  if o match '0X^1A0X' else
+                     rv := o
+                     clean = @true
+                  end
+               next i
+            end
+            if rv match '0X^1N0X' then
+               clean = @false
+               o = rv
+               rv = ''
+               max = len(o)
+               for i = 1 to max until clean
+                  if o match '^1N0X' then
+                     z = matchfield(o,'^1N0X',2)
+                     z = seq(z)
+                     if z > 48 and z < 54 then
+                        rv := char(z-22)
+                     end else
+                        rv := o[1,2]
+                     end
+                     o = o[3,999]
+                  end else
+                     rv := o[1,1]
+                     o = o[2,999]
+                  end
+                  if o match '0X^1N0X' else
+                     rv := o
+                     clean = @true
+                  end
+               next i
+            end
+            if rv match '0X^^0X' then rv = change(rv,'^^','^')
+         end
+      end
+   end
+   if index(rv,'$',1) then
+      if rv match '0X.$':@vm:'0X $' then
+         * trailing dot/space strip issue
+         rv = rv[1,len(rv)-1]
+      if rv match '$AUX':@vm:'$CON':@vm:'$NUL':@vm:'$PRN':@vm:'$AUX.0X':@vm:'$CON.0X':@vm:'$NUL.0X':@vm:'$PRN.0X':@vm:'$COM1N':@vm:'$COM1N.0X':@vm:'$LPT1N':@vm:'$LPT1N.0X' then
+         * Win reserved names
+         rv = rv[2,99]
+      end
+   end
+return
+
+GetWinSafeName:
+   * edge cases not automagically transliterated by uv
+   rv = @id
+   if params[',',2,1] then
+      if rv = '' then rv = '%' else
+         if index(rv,'%',1) then rv = change(rv,'%','%%')
+         if index(rv,'*',1) then rv = change(rv,'*','%A')
+         if index(rv,'\',1) then rv = change(rv,'\','%B')
+         if index(rv,':',1) then rv = change(rv,':','%C')
+         if index(rv,'"',1) then rv = change(rv,'"','%D')
+         if index(rv,'>',1) then rv = change(rv,'>','%G')
+         if index(rv,'<',1) then rv = change(rv,'<','%L')
+         if index(rv,'?',1) then rv = change(rv,'?','%Q')
+         if index(rv,'/',1) then rv = change(rv,'/','%S')
+         if index(rv,'|',1) then rv = change(rv,'|','%V')
+      end
+      for i = 1 to 26 ;* change char to ^A-Z
+         if index(rv,char(i),1) then rv = change(rv,char(i),'^':char(i+64))
+      next i
+      for i = 27 to 31 ;* change char to ^1-5
+         if index(rv,char(i),1) then rv = change(rv,char(i),'^':char(i+22))
+      next i
+      if index(rv,'^',1) then rv = change(rv,'^','^^')
+   end
+   if rv match '0X.':@vm:'0X ' then
+      * trailing dot/space strip issue
+      rv := '$'
+   end
+   if rv match 'AUX':@vm:'CON':@vm:'NUL':@vm:'PRN':@vm:'AUX.0X':@vm:'CON.0X':@vm:'NUL.0X':@vm:'PRN.0X':@vm:'COM1N':@vm:'COM1N.0X':@vm:'LPT1N':@vm:'LPT1N.0X' then
+      * Win reserved names
+      rv = '$':rv
+   end
+return
+end

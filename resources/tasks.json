@@ -1,0 +1,31 @@
+{
+   "version": "2.0.0",
+   "tasks": [
+      {
+         "label": "unibasic-compile",
+         "type": "shell",
+         "command": "pwsh",
+         "args": [
+            "-ExecutionPolicy",
+            "unrestricted",
+            "-NoProfile",
+            "-NonInteractive",
+            "-File",
+            "${workspaceFolder}\\.vscode\\unibasic-compile.ps1\" \"${file}\""
+         ],
+         "group": {
+            "kind": "build",
+            "isDefault": true
+         },
+         "presentation": {
+            "echo": true,
+            "reveal": "always",
+            "focus": true,
+            "panel": "shared",
+            "showReuseMessage": false,
+            "clear": true
+         },
+         "problemMatcher": []
+      }
+   ]
+}

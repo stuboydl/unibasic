@@ -5,6 +5,13 @@
       // symbols used for start and end a block comment. Remove this entry if your language does not support block comments
       //, "blockComment": [ "/*", "*/" ]
    },
+   "folding": {
+      // use to create a marker to fold code for slabs of UB code !beginfold/!endfold (eg like C#'s #region/#endregion)
+      "markers": {
+         "start": "^\\s*\\!beginfold\\b",
+         "end": "^\\s*\\!endfold\\b"
+      }
+   },
    // symbols used as brackets
    "brackets": [
       [
@@ -42,18 +49,30 @@
          "(",
          ")"
       ],
-      [
-         "\"",
-         "\""
-      ],
-      [
-         "\\",
-         "\\"
-      ],
-      [
-         "'",
-         "'"
-      ]
+      {
+         "open": "'",
+         "close": "'",
+         "notIn": [
+            "string",
+            "comment"
+         ]
+      },
+      {
+         "open": "\"",
+         "close": "\"",
+         "notIn": [
+            "string",
+            "comment"
+         ]
+      },
+      {
+         "open": "\\",
+         "close": "\\",
+         "notIn": [
+            "string",
+            "comment"
+         ]
+      }
    ],
    // symbols that that can be used to surround a selection
    "surroundingPairs": [
@@ -81,11 +100,5 @@
          "'",
          "'"
       ]
-   ],
-   "folding": {
-      "markers": {
-         "start": "!#region",
-         "end": "!#endregion"
-      }
-   }
+   ]
 }

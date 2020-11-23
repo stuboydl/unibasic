@@ -2,6 +2,9 @@
 	// See http://go.microsoft.com/fwlink/?LinkId=827846
 	// for the documentation about the extensions.json format
 	"recommendations": [
-		"eg2.tslint"
+      "awarest.vscode-awarest-align",
+      "eamodio.gitlens",
+      "ms-vscode.vscode-typescript-tslint-plugin",
+      "tyriar.sort-lines"
 	]
 }

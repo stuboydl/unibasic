@@ -11,11 +11,11 @@ Version 0
 * Imported Mallek's package for Pick for VS Code
 * Updated syntaxes for UniVerse
 * updated README
-* Added [Wiki](https://github.com/stuboydl/unibasic/wiki/Notes-on-using-vscode-with-Windows-UV-SB--git) for notes on how to set up your environment.
+* Added [Wiki](https://github.com/stuboydl/unibasic/wiki/Notes-on-using-vscode-with-Windows-UV-SB--git) for notes on how to set up your environment and examples.
 * See [Changelog.md](https://github.com/stuboydl/unibasic/blob/master/CHANGELOG.md) for more...
 
 Installation
-Inside VSCode from the command pallet Install Extension -> PickBasic
+Inside VSCode from the command pallet Install Extension -> UniBasic
 
 Manual Install
 
@@ -28,7 +28,7 @@ If you do not have git installed you can download the zip of this repository and
 * **Linux** ~/.vscode/extensions
 
 Recommmend default Dark+ theme
-Also, keyword.operator foreground may need tweaking
+Also, keyword.operator foreground may need tweaking in .vscode\settings.json
    "editor.tokenColorCustomizations": {
       "textMateRules": [
          {

@@ -1,3 +1,7 @@
+## Version 0.1.1
+- tidy up git repo
+- update .gitignore and package.json to reflect repo tidy up
+
 ## Version 0.1.0
 - add SBXA syntax highlighting
 

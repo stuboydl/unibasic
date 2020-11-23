@@ -120,7 +120,8 @@
           "END ELSE",
           "\t${5:expression}",
           "END"
-       ]
+       ],
+       "description":"Code snippet for an read statement"
       },
     "readv":{
        "prefix": "READV",
@@ -130,7 +131,8 @@
           "END ELSE",
           "\t${6:expression}",
           "end"
-       ]
+       ],
+       "description":"Code snippet for an readv statement"
       },
       "readu":{
          "prefix": "READU",
@@ -146,7 +148,8 @@
             "\t\t${6:expression}",
             "\tEND",
             "WHILE ISLOCKED DO REPEAT"
-         ]
+         ],
+         "description":"Code snippet for an readu statement"
       },
       "bscan":{
          "prefix" : "BSCAN",
@@ -160,11 +163,13 @@
          "prefix":"CALL SB.FILEVAR.S",
          "body":[
             "CALL SB.FILEVAR.S('${1:fileName}',0,${2:filevar},${3:ERR})"
-         ]
+         ],
+         "description":"Code snippet for an SB/XA file open statement"
       },
       "sb.disp.4":{
          "prefix":"CALL SB.DISP(4",
-         "body":["CALL SB.DISP(4,'`${1:heading}~(@VM:@VM)${2:message}\\Continue\\0\\RC')"]
+         "body":["CALL SB.DISP(4,'`${1:heading}~(@VM:@VM)${2:message}\\Continue\\0\\RC')"],
+         "description":"Code snippet for an SB/XA dialogue box statement"
       },
       "begin case statement": {
          "prefix": "BEGIN",
@@ -205,6 +210,4 @@
          ],
          "description": "Convert output for storage"
       }
-
-
 }

@@ -1,1 +1,14 @@
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
 node_modules/*
+package-lock.json
+out/*
+src/*
+ts*.json
+vsc-extension-quickstart.md
