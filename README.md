@@ -10,11 +10,10 @@ The intention is to continuously improve this by adding tool tips, formatting an
 ### Version 0.1.2
 * See [Changelog.md](https://github.com/stuboydl/unibasic/blob/master/CHANGELOG.md) for more...
 
-Installation
+## Installation
 Inside VSCode from the command pallet Install Extension -> UniBasic
 
-Manual Install
-
+### Manual Install
 Download and install [Microsoft Visual Studio Code](https://code.visualstudio.com/Download) - MS lightweight development environment.
 
 `git clone` this repository into your `.vscode/Extensions` folder (If you do not have git installed you can download the zip of this repository and unzip it to the same location.)
