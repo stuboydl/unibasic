@@ -11,7 +11,7 @@
             "-NoProfile",
             "-NonInteractive",
             "-File",
-            "${workspaceFolder}\\.vscode\\unibasic-compile.ps1\" \"${file}\""
+            "$env:USERPROFILE\\.vscode\\extensions\\stuboydl.vscode-unibasic-0.1.2\\resources\\unibasic-compile.ps1\" \"${file}\""
          ],
          "group": {
             "kind": "build",

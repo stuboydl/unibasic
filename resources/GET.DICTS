@@ -1,11 +1,24 @@
 program GET.DICTS
-$Copyright Copyleft 2020 Stuboydl NO LIABILITY ACCEPTED for your use of this program.
-* example unibasic program to find changes in dictionaries to update source control (git)
+$Copyright Copyleft 2020 SBCS/Stuboydl
+* example unibasic program to find changes in hashed files and dictionaries and update source controled folders (git)
+
+* !!! NO RESPONSIBILITY OR LIABILITY IS ACCEPTED FOR YOUR USE OF THIS PROGRAM !!!
+
 * NB This program has not been compiled or tested and is intended as an example ONLY.
-* NB be aware U2 doesn't play well with some Windows names restrictions/conventions when moving from hashed file to OS folder (type 19).
-*    See GetWinSafeName and GetUVSafeName gosubs below.
-*    eg "myitem." will have the trailing dot stripped when writing to windows, wheras "myItem*" will be converted to "myItem%A".
-*    eg items starting with "aux.", "con.", etc. will fail in type 19 files. eg an item called PRN.LABEL cannot be saved as a windows item!
+* NB Define any required criteria in your select statments below. They will not work as-is.
+* NB be aware U2 doesn't play well with some Windows names restrictions/conventions when moving from hashed files to OS folders (type 19).
+*    - "myitem." will have the trailing dot stripped when writing to windows, wheras "myItem*" will be converted to "myItem%A".
+*    - items starting with "aux.", "con.", etc. will fail in type 19 files. eg an item called PRN.LABEL cannot be saved as a windows item!
+*    See GetWinSafeName and GetUVSafeName gosubs below for examples on handling.
+
+! CREATE.FILEI SOURCE.DICTS 19
+! INSERT INTO DICT SOURCE.DICTS USING DICT DICT.DICT (FIELD,CODE,FUNC,NAME,FORMAT,SM) VALUES ('ACCOUNT','I','@ID["=",1,1]','Account','10L','S');
+! INSERT INTO DICT SOURCE.DICTS USING DICT DICT.DICT (FIELD,CODE,FUNC,NAME,FORMAT,SM) VALUES ('FILENAME','I','@ID["=",2,1]','Filename','16L','S');
+! INSERT INTO DICT SOURCE.DICTS USING DICT DICT.DICT (FIELD,CODE,FUNC,NAME,FORMAT,SM) VALUES ('ITEMNAME','I','@ID["=",3,1]','Itemname','24L','S');
+! CREATE.FILEI SOURCE.VOC 19
+! INSERT INTO DICT SOURCE.VOC USING DICT DICT.DICT (FIELD,CODE,FUNC,NAME,FORMAT,SM) VALUES ('ACCOUNT','I','@ID["=",1,1]','Account','10L','S');
+! INSERT INTO DICT SOURCE.VOC USING DICT DICT.DICT (FIELD,CODE,FUNC,NAME,FORMAT,SM) VALUES ('FILENAME','I','@ID["=",2,1]','Filename','16L','S');
+! INSERT INTO DICT SOURCE.VOC USING DICT DICT.DICT (FIELD,CODE,FUNC,NAME,FORMAT,SM) VALUES ('ITEMNAME','I','@ID["=",3,1]','Itemname','24L','S');
 
    thisAcnt = downcase(@who)
    get(arg.) isLive else isLive = @false
@@ -26,9 +39,8 @@ $Copyright Copyleft 2020 Stuboydl NO LIABILITY ACCEPTED for your use of this pro
 stop
 
 OpenFiles:
-   open 'ARCONTROL'     to arcontrol   else stop
-   open 'SOURCE.DICTS'  to sourceDicts else stop
-   open 'SOURCE.VOC'    to sourceVoc   else stop
+   open 'SOURCE.DICTS'  to sourceDicts else stop ;* opens a type 19 file under git control
+   open 'SOURCE.VOC'    to sourceVoc   else stop ;* opens a type 19 file under git control
    open 'VOC'           to voc         else stop
 return
 

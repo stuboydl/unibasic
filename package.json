@@ -6,8 +6,8 @@
    "icon": "images/unibasic-icon.png",
    "license": "MIT",
    "publisher": "stuboydl",
-   "version": "0.1.1",
-   "private":true,
+   "version": "0.1.2",
+   "private": true,
    "bugs": {
       "url": "https://github.com/stuboydl/unibasic/issues"
    },

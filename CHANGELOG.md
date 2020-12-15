@@ -1,3 +1,8 @@
+## Version 0.1.2
+- tidy up syntax
+- update sample GET.DICTS
+- move unibasic-compile script to extension_dir/resources
+
 ## Version 0.1.1
 - tidy up git repo
 - update .gitignore and package.json to reflect repo tidy up
