@@ -26,6 +26,7 @@ Configure resources/tasks.json and resources/unibasic-compile.ps1 for compilatio
 
 Recommmend default Dark+ theme
 Also, keyword.operator foreground may need tweaking in .vscode\settings.json
+```json
    "editor.tokenColorCustomizations": {
       "textMateRules": [
          {
@@ -36,7 +37,7 @@ Also, keyword.operator foreground may need tweaking in .vscode\settings.json
          }
       ],
    }
-
+```
 ## Notes on Usage
 - See [Wiki](https://github.com/stuboydl/unibasic/wiki/Notes-on-using-vscode-with-Windows-UV-SB--git) for notes on how to set up your environment and examples.
 
