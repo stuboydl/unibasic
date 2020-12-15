@@ -7,11 +7,8 @@ Conformed and updated for UniBasic (principally UniVerse).
 
 The intention is to continuously improve this by adding formatting and other features along the way.
 
-Version 0
-* Imported Mallek's package for Pick for VS Code
-* Updated syntaxes for UniVerse
-* updated README
-* Added [Wiki](https://github.com/stuboydl/unibasic/wiki/Notes-on-using-vscode-with-Windows-UV-SB--git) for notes on how to set up your environment and examples.
+Version 0.1.2
+* See [Wiki](https://github.com/stuboydl/unibasic/wiki/Notes-on-using-vscode-with-Windows-UV-SB--git) for notes on how to set up your environment and examples.
 * See [Changelog.md](https://github.com/stuboydl/unibasic/blob/master/CHANGELOG.md) for more...
 
 Installation
@@ -19,9 +16,9 @@ Inside VSCode from the command pallet Install Extension -> UniBasic
 
 Manual Install
 
-`git clone` this repository into your `.vscode/Extensions` folder
+Download and install [Microsoft Visual Studio Code](https://code.visualstudio.com/Download) - MS lightweight development environment.
 
-If you do not have git installed you can download the zip of this repository and unzip it to the same location.
+`git clone` this repository into your `.vscode/Extensions` folder (If you do not have git installed you can download the zip of this repository and unzip it to the same location.)
 
 * **Windows** %USERPROFILE%\\.vscode\extensions
 * **Mac** ~/.vscode/extensions
@@ -45,7 +42,7 @@ Also, keyword.operator foreground may need tweaking in .vscode\settings.json
 
 ##Credits
 
-Thanks for the original work done by Jacob Bennett and Travis Mallek to get this far.
+Thanks for the original work done by Jacob Bennett and Travis Mallek to get to 0.0.1.
 
 https://github.com/JacobBennett/sublime-pickbasic
 
