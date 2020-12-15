@@ -22,6 +22,8 @@ Download and install [Microsoft Visual Studio Code](https://code.visualstudio.co
 * **Mac** ~/.vscode/extensions
 * **Linux** ~/.vscode/extensions
 
+Configure resources/tasks.json and resources/unibasic-compile.ps1 for compilation.
+
 Recommmend default Dark+ theme
 Also, keyword.operator foreground may need tweaking in .vscode\settings.json
    "editor.tokenColorCustomizations": {
