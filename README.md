@@ -1,14 +1,13 @@
 # unibasic README
 
 ## UniBasic Extension for VS Code
-This extension is based on work by Jacob Bennett and Travis Mallek pick highlighting.
+This extension is for syntax highlighting [Rocket U2](https://www.rocketsoftware.com/platforms/multivalue) UniBasic.
 
 Conformed and updated for UniBasic (principally UniVerse).
 
-The intention is to continuously improve this by adding formatting and other features along the way.
+The intention is to continuously improve this by adding tool tips, formatting and other features along the way.
 
-Version 0.1.2
-* See [Wiki](https://github.com/stuboydl/unibasic/wiki/Notes-on-using-vscode-with-Windows-UV-SB--git) for notes on how to set up your environment and examples.
+### Version 0.1.2
 * See [Changelog.md](https://github.com/stuboydl/unibasic/blob/master/CHANGELOG.md) for more...
 
 Installation
@@ -38,9 +37,9 @@ Also, keyword.operator foreground may need tweaking in .vscode\settings.json
    }
 
 ## Notes on Usage
-- See the Wiki for more notes
+- See [Wiki](https://github.com/stuboydl/unibasic/wiki/Notes-on-using-vscode-with-Windows-UV-SB--git) for notes on how to set up your environment and examples.
 
-##Credits
+## Credits
 
 Thanks for the original work done by Jacob Bennett and Travis Mallek to get to 0.0.1.
 
