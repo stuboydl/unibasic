@@ -24,15 +24,15 @@
       "comments":{
          "patterns": [
             {
-               "comment": "normal comments",
+               "comment": "line comments",
                "name": "comment.line.asterisk.unibasic",
-               "match": "^\\s*(\\!.*|\\*.*|(?i)rem\\s.*)",
+               "match": "^\\s*(\\!|\\$\\*|\\*|(?i)rem\\s.*).*$",
                "QuoteComment-deprecate??": "(^['|\"]*|\\s)"
             },
             {
                "comment": "inline comment",
                "name": "comment.line.asterisk.unibasic",
-               "match": ";\\s*(\\!.*|\\*.*|(?i)rem\\s.*)"
+               "match": "(?<=(;|^\\w+:|^\\d+))\\s*(\\!|\\$\\*|\\*|(?i)rem\\s.*).*$"
             },
             {
                "comment": "get back to it later",
@@ -43,6 +43,18 @@
       },
       "keywords": {
          "patterns": [
+            {
+               "comment": "internal subroutine label",
+               "match": "^(?i)(^\\d+:?|^[a-z][\\.$%\\da-z]+:)",
+               "captures": {
+                  "1": {
+                     "name": "entity.name.type.unibasic"
+                  },
+                  "2": {
+                     "name": "comment.line.asterisk.unibasic"
+                  }
+               }
+            },
             {
                "comment": "operators",
                "name": "keyword.operator.unibasic",
@@ -74,18 +86,6 @@
                }
             },
             {
-               "comment": "internal subroutine label",
-               "match": "^(?i)([a-z_\\.0-9]*:|[0-9]+)[\\s|;]*($|\\!.*|\\*.*)",
-               "captures": {
-                  "1": {
-                     "name": "entity.name.type.unibasic"
-                  },
-                  "2": {
-                     "name": "comment.line.asterisk.unibasic"
-                  }
-               }
-            },
-            {
                "comment": "nummers",
                "name": "constant.numeric.unibasic",
                "match": "\\b([0-9]+)\\b"
@@ -113,7 +113,7 @@
             {
                "comment": "@ commands",
                "name": "constant.character.escape.unibasic",
-               "match": "(@(?i:abort\\.code|account|am|ans|authorization|command|command\\.stack|conv|crthigh|crtwide|data\\.pending|date|day|dict|false|file\\.name|filename|fm|format|hdbc|header|henv|hstmt|id|im|isolation|level|logname|lptrhigh|lptrwide|month|mv|nb|nd|new|ni|ns|null|null\\.str|nv|old|option|parasentence|path|pyexceptionmsg|pyexceptiontraceback|pyexceptiontype|reccount|record|recur0|recur1|recur2|recur3|recur4|schema|selected|sentence|sm|sql\\.code|sql\\.date|sql\\.error|sql\\.state|sql\\.time|sql\\.warning|sqlproc\\.name|sqlproc\\.tx\\.level|stdfil|svm|sys\\.bell|system\\.return\\.code|system\\.set|term\\.type|time|tm|transaction|transaction\\.id|transaction\\.level|true|tty|user0|user1|user2|user3|user4|userno|user\\.no|user\\.return\\.code|vm|who|year|year4))(?![\\%\\.\\_])\\b"
+               "match": "(@(?i:abort\\.code|account|am|ans|authorization|command|command\\.stack|conv|crthigh|crtwide|data\\.pending|date|day|dict|false|file\\.name|filename|fm|format|hdbc|header|henv|hstmt|id|im|isolation|level|logname|lptrhigh|lptrwide|month|mv|nb|nd|new|ni|ns|null|null\\.str|nv|old|option|parasentence|path|pyexceptionmsg|pyexceptiontraceback|pyexceptiontype|reccount|record|recur0|recur1|recur2|recur3|recur4|schema|selected|sentence|sm|sql\\.code|sql\\.date|sql\\.error|sql\\.state|sql\\.time|sql\\.warning|sqlproc\\.name|sqlproc\\.tx\\.level|stdfil|svm|sys\\.bell|system\\.return\\.code|system\\.set|term\\.type|time|tm|transaction|transaction\\.id|transaction\\.level|true|tty|tz|user0|user1|user2|user3|user4|userno|user\\.no|user\\.return\\.code|vm|who|year|year4))(?![\\%\\.\\_])\\b"
             },
             {
                "comment": "options",
@@ -143,7 +143,7 @@
             {
                "comment": "fgh",
                "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:fadd|fdiv|ffix|fflt|field|fieldstore|fileinfo|find|findstr|fix|flush|fmt|fmtdp|fmtsdp|fmul|fold|folddp|footing|format|formlist|fsub|get|getcwdgetenv|getlist|getlocale|getrem|getusergroup|getx|group|groupstore|heading|headinge|headingn|hush)(?![\\%\\.\\_])\\b"
+               "match": "\\b(?<![\\%\\.\\_])(?i:fadd|fdiv|ffix|fflt|field|fieldstore|fileinfo|find|findstr|fix|flush|fmt|fmtdp|fmtsdp|fmul|fold|folddp|footing|format|formlist|fsub|get|gcdistance|getcwdgetenv|getlist|getlocale|getrem|getusergroup|getx|group|groupstore|heading|headinge|headingn|hush)(?![\\%\\.\\_])\\b"
             },
             {
                "comment": "ijkl",
@@ -215,7 +215,7 @@
       "sbxa":{
          "patterns": [
             {
-               "comment": "sbxa",
+               "comment": "sbxa common",
                "disabled": 1,
                "name":"variable.other.readwrite.sbxa",
                "match":"\\b(?<![\\%\\.\\_])(?:RECORD|KEY|WORK|OTHER\\.REC|LF\\.INFO|CNT|ACTION|LINE|MAINFILE|F\\.FILE|ORIG\\.REC|LOCK\\.KEY|HEAD|SCR\\.IMAGE|STATUS\\.LINE|BOX\\.CORDS|OUTVAL|OUTVAL\\.FLAGS|F\\.INDX|F\\.INDX\\.DEFNS|GUI|GUIRES|USERDATA|SCREENNO|XUI|SERVICE\\.INFO|EXPRESS\\.VARS|DEBUG\\.LOGGING|USER\\.DEBUG|FREE\\.TEMP|VALUE|RTN\\.FLAG|PARAM|REFRESH|MENU\\.OPT|PROC\\.NAME|LEVEL\\.NO|FILES\\.OPENED|FILEVAR|PARMS|SBPARM|OTHER|SBC\\.PARM|SB\\.CONT|CONTROL|PORT|SYSID|ACNT\\.NAME|TERM\\.DEFN|PRINT\\.DEFN|PASS\\.DEFN|USER\\.ID|USER\\.KEYS|PCTERM|F\\.MD|F\\.DMCONT|F\\.DMDRIV|F\\.PASS|F\\.CONT|F\\.PROC|F\\.MENU|F\\.DMPROC|F\\.DEFN|F\\.G\\.PROC|F\\.G\\.MENU|F\\.G\\.DEFN|F\\.DMSYSDEFN|BT\\.NODE|BT\\.LEV\\.NO|BT\\.ID|BT\\.POS|GUIDATA|SBCLIENT|RES1|RES2|RES3|RES4|XUIDATA)(?![\\%\\.\\_])\\b"
@@ -227,17 +227,17 @@
             {
                "begin": "\"",
                "end": "\"",
-               "name": "string.quoted.double"
+               "name": "string.quoted.double.unibasic"
             },
             {
                "begin": "'",
                "end": "'",
-               "name": "string.quoted.single"
+               "name": "string.quoted.single.unibasic"
            },
            {
             "begin": "\\\\",
             "end": "\\\\",
-            "name": "string.quoted.other"
+            "name": "string.quoted.other.unibasic"
          }
       ]
       }

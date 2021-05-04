@@ -2,6 +2,7 @@
 - tidy up syntax
 - update sample GET.DICTS
 - move unibasic-compile script to extension_dir/resources
+- add UV 11.3.2 changes
 
 ## Version 0.1.1
 - tidy up git repo
