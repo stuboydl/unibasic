@@ -1,246 +1,238 @@
 {
-   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-   "name": "unibasic",
-   "scopeName": "source.unibasic",
-   "patterns": [
-      {
-         "include": "#comments"
-      },
-      {
-         "include": "#strings"
-      },
-      {
-         "comment": "Unibasic rules",
-         "disabled": 0,
-         "include": "#keywords"
-      },
-      {
-         "comment": "SB/XA rules",
-         "disabled": 0,
-         "include": "#sbxa"
-      }
-   ],
-   "repository": {
-      "comments":{
-         "patterns": [
-            {
-               "comment": "line comments",
-               "name": "comment.line.asterisk.unibasic",
-               "match": "^\\s*(\\!|\\$\\*|\\*|(?i)rem\\s.*).*$",
-               "QuoteComment-deprecate??": "(^['|\"]*|\\s)"
-            },
-            {
-               "comment": "inline comment",
-               "name": "comment.line.asterisk.unibasic",
-               "match": "(?<=(;|^\\w+:|^\\d+))\\s*(\\!|\\$\\*|\\*|(?i)rem\\s.*).*$"
-            },
-            {
-               "comment": "get back to it later",
-               "name": "meta.comment.fixme.unibasic",
-               "match": "\\b(?i:fixme|todo):\\b"
-            }
-         ]
-      },
-      "keywords": {
-         "patterns": [
-            {
-               "comment": "internal subroutine label",
-               "match": "^(?i)(^\\d+:?|^[a-z][\\.$%\\da-z]+:)",
-               "captures": {
-                  "1": {
-                     "name": "entity.name.type.unibasic"
-                  },
-                  "2": {
-                     "name": "comment.line.asterisk.unibasic"
-                  }
-               }
-            },
-            {
-               "comment": "operators",
-               "name": "keyword.operator.unibasic",
-               "match": "\\B(=|<|>|<=|>=|!=|\\*|\\^|/|\\-|\\:|\\+|#)\\B"
-            },
-            {
-               "comment": "comparitors",
-               "name": "keyword.operator.unibasic",
-               "match": "\\s(?i:\\&|\\!|and|or|not|eq|lt|gt|ne|le|ge|match|matches)\\s"
-            },
-            {
-               "comment": "invoke general internal/external subroutine",
-               "match": "\\b(?<![\\%\\.\\_])(?i)(call|function|gosub|prog|program|sub|subroutine)\\s+([-$!@\\*]{0,1}[a-z0-9]{1}[a-z0-9_\\-\\.\\*]+)(?![\\%\\.\\_])\\b",
-               "captures": {
-                  "1": {
-                     "name": "storage.type.unibasic"
-                  },
-                  "2": {
-                     "name": "entity.name.function.unibasic",
-                     "patterns": [
-                        {
-                           "comment": "invoke external helper subroutine",
-                           "match": "(?i)(!async|!errno|!fcmp|!get\\.partnum|!get\\.pathname|!get\\.pu|!get\\.user\\.counts|!inline\\.prompts|!ints|!make\\.pathname|!matches|!message|!report\\.error|!set\\.ptr|!set\\.pu|!timdat|!user\\.type|!voc\\.pathname)\\b",
-                           "name": "support.function.unibasic"
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "unibasic",
+    "scopeName": "source.unibasic",
+    "patterns": [{
+            "include": "#comments"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "comment": "Unibasic rules",
+            "disabled": 0,
+            "include": "#keywords"
+        },
+        {
+            "comment": "SB/XA rules",
+            "disabled": 0,
+            "include": "#sbxa"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [{
+                    "comment": "get back to it later",
+                    "name": "meta.comment.fixme.unibasic",
+                    "match": "\\b(?i:fixme|todo):\\b"
+                },
+                {
+                    "comment": "line comments [*,!,$*,REM] are all valid",
+                    "name": "comment.line.asterisk.unibasic",
+                    "match": "^\\s*(\\!|\\$\\*|\\*|(?i)rem\\s.*).*$",
+                    "//QuoteComment-deprecate??": "(^['|\"]*|\\s)"
+                },
+                {
+                    "comment": "inline comment",
+                    "name": "comment.line.asterisk.unibasic",
+                    "match": "(?<=(;|^\\w+:|^\\d+))\\s*(\\!|\\$\\*|\\*|(?i)rem\\s.*).*$"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [{
+                    "comment": "internal subroutine label",
+                    "match": "^(?i)(^\\d+:?|^[a-z][\\.$%\\da-z]+:)",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.type.unibasic"
                         }
-
-                     ]
-                  }
-               }
-            },
-            {
-               "comment": "nummers",
-               "name": "constant.numeric.unibasic",
-               "match": "\\b([0-9]+)\\b"
-            },
-            {
-               "comment": "lead words and other commands",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:begin|by|calling|case|commit|continue|debug|dim|dimension|do|end|error|exec|execute|exit|filelock|fileunlock|for|from|if|in|isolation|level|lit|literally|locked|loop|next|off|on|perform|recordlockl|recordlocku|release|repeat|return|rollback|step|stop|stope|stopm|system|then|to|transaction|until|using|while)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "lead words and other commands",
-               "name": "storage.type.unibasic",
-               "match": "(?i:get\\(arg\\.\\)|get\\(arg\\.,.+\\))\\s"
-            },
-            {
-               "comment": "other commands",
-               "name": "keyword.control.unibasic",
-               "match": "^\\s*(?i:assign|chain|com|common|declare gci|deffun|equ|equate|[\\#|\\$]?include)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "$ directives",
-               "name": "keyword.control.unibasic",
-               "match": "^\\s*(\\$(?i:chain|copyright|define|eject|else|endif|ifdef|ifndef|indef|insert|map|options|page|undefine))(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "@ commands",
-               "name": "constant.character.escape.unibasic",
-               "match": "(@(?i:abort\\.code|account|am|ans|authorization|command|command\\.stack|conv|crthigh|crtwide|data\\.pending|date|day|dict|false|file\\.name|filename|fm|format|hdbc|header|henv|hstmt|id|im|isolation|level|logname|lptrhigh|lptrwide|month|mv|nb|nd|new|ni|ns|null|null\\.str|nv|old|option|parasentence|path|pyexceptionmsg|pyexceptiontraceback|pyexceptiontype|reccount|record|recur0|recur1|recur2|recur3|recur4|schema|selected|sentence|sm|sql\\.code|sql\\.date|sql\\.error|sql\\.state|sql\\.time|sql\\.warning|sqlproc\\.name|sqlproc\\.tx\\.level|stdfil|svm|sys\\.bell|system\\.return\\.code|system\\.set|term\\.type|time|tm|transaction|transaction\\.id|transaction\\.level|true|tty|tz|user0|user1|user2|user3|user4|userno|user\\.no|user\\.return\\.code|vm|who|year|year4))(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "options",
-               "name": "keyword.control.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:all|default|in2|information|pick|piopen|reality|case|comp\\.precision|count\\.ovlp|end\\.warn|exec\\.eq\\.perf|extra\\.delim|for\\.incr\\.bef|format\\.oconv|fselect|header\\.brk|header\\.date|header\\.eject|in2\\.substr|info\\.abort|info\\.convert|info\\.enter|info\\.include|info\\.locate|info\\.marks|info\\.mod|input\\.else|inputat|int\\.precision|locate\\.r83|no\\.case|no\\.reselect|no\\.return\\.warn|ongo\\.range|pclose\\.all|perf\\.eq\\.exec|piopen\\.execute|piopen\\.include|piopen\\.matread|piopen\\.selidx|radians|raw\\.output|read\\.retain|real\\.substr|rnext\\.expl|seq\\.255|static\\.dim|stop\\.msg|supp\\.data\\.echo|time\\.millisecond|ult\\.format|use\\.errmsg|var\\.select|vec\\.math|wide\\.if)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "vector functions",
-               "name": "keyword.other.unibasic",
-               "match": "\\b(?i:adds|ands|cats|chars|counts|divs|eqs|fields|fmts|ges|gts|iconvs|ifs|indexs|isnulls|lens|lensdp|les|lts|mods|muls|negs|nes|nots|nums|oconvs|ors|reuse|seqs|spaces|splice|strs|subs|substrings|summation|trims|unichars|uniseqs)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "ab",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:abort|abs|abss|acos|alpha|ascii|asin|assigned|atan|auxmap|before|bitand|bitnot|bitor|bitreset|bitset|bittest|bitxor|break|bscan|byte|bytelen|bytetype|byteval)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "c",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:capturing|cat|century\\.pivot|change|changetimestamp|char|chdir|checksum|clear|clearcommon|cleardata|clearfile|clearinput|clearprompts|clearselect|close|closeseq|col1|col2|collectdata|compare|convert|convertcos|cos|cosh|count|create|crt)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "de",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:data|date|dcount|decrypt|defc|defce|del|delete|deletelist|deleteu|descrinfo|digest|disabledec|display|div|downcase|dquote|dround|dtx|ebcdic|echo|else|enabledec|encode|encrypt|enter|eof|ereplace|errmsg|exchange|exp|extract)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "fgh",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:fadd|fdiv|ffix|fflt|field|fieldstore|fileinfo|find|findstr|fix|flush|fmt|fmtdp|fmtsdp|fmul|fold|folddp|footing|format|formlist|fsub|get|gcdistance|getcwdgetenv|getlist|getlocale|getrem|getusergroup|getx|group|groupstore|heading|headinge|headingn|hush)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "ijkl",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:icheck|iconv|ilprompt|index|indices|inmat|input|inputclear|inputdisp|inputdp|inputerr|inputif|inputnull|inputtrap|ins|insert|int|isnull|itype|keyedit|keyexit|keyin|keytrap|latin1|left|len|lendp|let|ln|localdatelocaltime|locate|lock|lowcase|lower)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "mno",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:maketimestamp|mat|matbuild|matchfield|matparse|matread|matreadl|matreadu|matwrite|matwriteu|maximum|minimum|mod|msleep|nap|neg|nobuf|null|num|oconv|open|opencheck|opendev|openpath|openseq|openser|osbread|osbwrite|osclose|osdelete|osopen|osread|oswrite|out)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "pqr",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:page|passlist|pause|pcperform|precision|print|printer|printerr|procread|procwrite|prompt|putenv|pwr|quote|raise|randomize|read|readblk|readl|readlist|readnext|readselect|readseq|readt|readu|readv|readvl|readvu|readxml|real|recordlocked|rem|remove|replace|returning|revremove|rewind|right|rnd|rqm|rtndata|rtnlist|rpc\\.call|rpc\\.connect|rpc\\.disconnect)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "st",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:sadd|scmp|sdiv|seek|select|selecte|selectindex|selectinfo|selectn|selectv|send|sentence|seq|setting|set|setrem|sin|sinh|sleep|smul|sort|soundex|space|sqrt|squote|sselect|sselectn|sselectv|ssub|start|status|str|subr|sum|swap|tabstop|tan|tanh|terminfo|time|timedate|timeout|tparm|tprint|trans|trim|trimb|trimbs|trimf|trimfs|ttyctl|ttyget|ttyset)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "uvwxyz",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:udtexecute|unassigned|unichar|uniseq|unlock|upcase|uprint|userinfo|weof|weofseq|write|writeblk|writelist|writeseq|writeseqf|writet|writeu|writev|writevu|writexml|xlate|xtd)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "bci",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:ClearDiagnostics|GetDiagnostics|SetDiagnostics|SQLAllocConnect|SQLAllocEnv|SQLAllocStmt|SQLBindCol|SQLBindCol|SQLBindParameter|SQLCancel|SQLColAttributes|SQLColumns|SQLConnect|SQLDescribeCol|SQLDisconnect|SQLError|SQLExecDirect|SQLExecute|SQLFetch|SQLFreeConnect|SQLFreeEnv|SQLFreeStmt|SQLGetInfo|SQLGetTypeInfo|SQLNumParams|SQLNumResultCols|SQLParamOptions|SQLPrepare|SQLRowCount|SQLSetConnectOption|SQLSetParam|SQLSpecialColumns|SQLStatistics|SQLTables|SQLTransact)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "dom",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:XDOMOpen|XDOMCreateNode|XDOMWrite|XDOMClose|XDOMValidate|XDOMLocate|XDOMLocateNode|XDOMCreateNode|XDOMEvaluate|XDOMRemove|XDOMAppend|XDOMInsert|XDOMReplace|XDOMAddChild|XDOMClone|XDOMTransform|XDOMGetNodeValue|XDOMGetNodeName|XDOMGetNodeType|XDOMGetAttribute|XDOMGetOwnerDocument|XDOMGetUserData|XDOMSetNodeValue|XDOMSetUserData)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "python",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:PyCall|PyCallFunction|PyCallMethod|PyGetAttr|PyImport|PySetAttr)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "soap",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:SOAPSetDefault|SOAPGetDefault|SOAPCreateRequest|SOAPSetParameters|SOAPSetRequestHeader|SOAPSetRequestBody|SOAPSetRequestContent|SOAPRequestWrite|SOAPSubmitRequest|SOAPGetResponseHeader|SOAPGetFault|protocolLogging)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "sockets",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:AcceptConnection|AddAuthenticationRule|AddCertificate|AddRequestParameter|AnalyzeCertificate|CloseSocket|CreateCertification|CreateCertRequest|CreateRequest|CreateSecureRequest|CreateSecurityContext|GenerateKey|GetCipherSuite|GetHTTPDefault|GetSocketErrorMessage|GetSocketInformation|GetSocketOptions|InitSecureServerSocket|InitServerSocket|LoadSecurityContext|OpenSecureSocket|OpenSocket|ProtocolLogging|ReadSocket|SaveSecurityContext|SetAuthenticationDepth|SetCipherSuite|SetClientauthentication|SetHTTPDefault|SetLocale|SetPrivateKey|SetRandomSeed|SetRequestHeader|SetSocketOptions|ShowSecurityContext|Signature|SubmitRequest|WriteSocket)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "udo",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:UDOArrayAppendItem|UDOArrayDeleteItem|UDOArrayGetItem|UDOArrayGetNextItem|UDOArrayGetSize|UDOArrayInsertItem|UDOArraySetItem|UDOClone|UDOCreate|UDODeleteProperty|UDOFree|UDOGetLastError|UDOGetNextProperty|UDOGetOption|UDOGetProperty|UDOGetPropertyNames|UDOGetType|UDOIsTypeOf|UDORead|UDOSetOption|UDOSetProperty|UDOWrite)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "xml/ami",
-               "name": "storage.type.unibasic",
-               "match": "\\b(?<![\\%\\.\\_])(?i:closeXMLData|openXMLData|prepareXML|readXMLData|releaseXML|xmlError|XMLGetError|XMLExecute|XMLtoDB|amInitialize|amReceiveMsg|amReceiveRequest|amSendMsg|amSendRequest|amSendResponse|amTerminate|XMAPOpen|XMAPClose|XMAPCreate|XMAPReadNext|XMAPAppendRec|XMAPToXMLDoc)(?![\\%\\.\\_])\\b"
-            },
-            {
-               "comment": "deprecated",
-               "name":"invalid.deprecated.unibasic",
-               "match":"\\b(?<![\\%\\.\\_])(?i)(go|go\\s{0,1}to)(?![\\%\\.\\_])\\b"
-            }
-         ]
-      },
-      "sbxa":{
-         "patterns": [
-            {
-               "comment": "sbxa common",
-               "disabled": 1,
-               "name":"variable.other.readwrite.sbxa",
-               "match":"\\b(?<![\\%\\.\\_])(?:RECORD|KEY|WORK|OTHER\\.REC|LF\\.INFO|CNT|ACTION|LINE|MAINFILE|F\\.FILE|ORIG\\.REC|LOCK\\.KEY|HEAD|SCR\\.IMAGE|STATUS\\.LINE|BOX\\.CORDS|OUTVAL|OUTVAL\\.FLAGS|F\\.INDX|F\\.INDX\\.DEFNS|GUI|GUIRES|USERDATA|SCREENNO|XUI|SERVICE\\.INFO|EXPRESS\\.VARS|DEBUG\\.LOGGING|USER\\.DEBUG|FREE\\.TEMP|VALUE|RTN\\.FLAG|PARAM|REFRESH|MENU\\.OPT|PROC\\.NAME|LEVEL\\.NO|FILES\\.OPENED|FILEVAR|PARMS|SBPARM|OTHER|SBC\\.PARM|SB\\.CONT|CONTROL|PORT|SYSID|ACNT\\.NAME|TERM\\.DEFN|PRINT\\.DEFN|PASS\\.DEFN|USER\\.ID|USER\\.KEYS|PCTERM|F\\.MD|F\\.DMCONT|F\\.DMDRIV|F\\.PASS|F\\.CONT|F\\.PROC|F\\.MENU|F\\.DMPROC|F\\.DEFN|F\\.G\\.PROC|F\\.G\\.MENU|F\\.G\\.DEFN|F\\.DMSYSDEFN|BT\\.NODE|BT\\.LEV\\.NO|BT\\.ID|BT\\.POS|GUIDATA|SBCLIENT|RES1|RES2|RES3|RES4|XUIDATA)(?![\\%\\.\\_])\\b"
-            }
-         ]
-      },
-      "strings": {
-         "patterns": [
-            {
-               "begin": "\"",
-               "end": "\"",
-               "name": "string.quoted.double.unibasic"
-            },
-            {
-               "begin": "'",
-               "end": "'",
-               "name": "string.quoted.single.unibasic"
-           },
-           {
-            "begin": "\\\\",
-            "end": "\\\\",
-            "name": "string.quoted.other.unibasic"
-         }
-      ]
-      }
-   }
+                    }
+                },
+                {
+                    "comment": "operators",
+                    "name": "keyword.operator.unibasic",
+                    "match": "\\B(=|<|>|<=|>=|!=|\\*|\\^|/|\\-|\\:|\\+|#)\\B"
+                },
+                {
+                    "comment": "comparitors",
+                    "name": "keyword.operator.unibasic",
+                    "match": "\\s(?i:\\&|\\!|and|or|not|eq|lt|gt|ne|le|ge|match|matches)\\s"
+                },
+                {
+                    "comment": "invoke general internal/external subroutine",
+                    "match": "\\b(?<![\\%\\.\\_])(?i)(call|function|gosub|prog|program|sub|subroutine)\\s+([-$!@\\*]{0,1}[a-z0-9]{1}[a-z0-9_\\-\\.\\*]+)(?![\\%\\.\\_])\\b",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.type.unibasic"
+                        },
+                        "2": {
+                            "name": "entity.name.function.unibasic",
+                            "patterns": [{
+                                "comment": "invoke external helper subroutine",
+                                "match": "(?i)(!async|!errno|!fcmp|!get\\.partnum|!get\\.pathname|!get\\.pu|!get\\.user\\.counts|!inline\\.prompts|!ints|!make\\.pathname|!matches|!message|!report\\.error|!set\\.ptr|!set\\.pu|!timdat|!user\\.type|!voc\\.pathname)\\b",
+                                "name": "support.function.unibasic"
+                            }]
+                        }
+                    }
+                },
+                {
+                    "comment": "nummers",
+                    "name": "constant.numeric.unibasic",
+                    "match": "\\b([0-9]+)\\b"
+                },
+                {
+                    "comment": "lead words and other commands",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:begin|by|calling|case|commit|continue|debug|dim|dimension|do|end|error|exec|execute|exit|filelock|fileunlock|for|from|if|in|isolation|level|lit|literally|locked|loop|next|off|on|perform|recordlockl|recordlocku|release|repeat|return|rollback|step|stop|stope|stopm|system|then|to|transaction|until|using|while)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "lead words and other commands",
+                    "name": "storage.type.unibasic",
+                    "match": "(?i:get\\(arg\\.\\)|get\\(arg\\.,.+\\))\\s"
+                },
+                {
+                    "comment": "other commands",
+                    "name": "keyword.control.unibasic",
+                    "match": "^\\s*(?i:assign|chain|com|common|declare gci|deffun|equ|equate|[\\#|\\$]?include)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "$ directives",
+                    "name": "keyword.control.unibasic",
+                    "match": "^\\s*(\\$(?i:chain|copyright|define|eject|else|endif|ifdef|ifndef|indef|insert|map|options|page|undefine))(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "@ commands",
+                    "name": "constant.character.escape.unibasic",
+                    "match": "(@(?i:abort\\.code|account|am|ans|authorization|command|command\\.stack|conv|crthigh|crtwide|data\\.pending|date|day|dict|false|file\\.name|filename|fm|format|hdbc|header|henv|hstmt|id|im|isolation|level|logname|lptrhigh|lptrwide|month|mv|nb|nd|new|ni|ns|null|null\\.str|nv|old|option|parasentence|path|pyexceptionmsg|pyexceptiontraceback|pyexceptiontype|reccount|record|recur0|recur1|recur2|recur3|recur4|schema|selected|sentence|sm|sql\\.code|sql\\.date|sql\\.error|sql\\.state|sql\\.time|sql\\.warning|sqlproc\\.name|sqlproc\\.tx\\.level|stdfil|svm|sys\\.bell|system\\.return\\.code|system\\.set|term\\.type|time|tm|transaction|transaction\\.id|transaction\\.level|true|tty|tz|user0|user1|user2|user3|user4|userno|user\\.no|user\\.return\\.code|vm|who|year|year4))(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "options",
+                    "name": "keyword.control.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:all|default|in2|information|pick|piopen|reality|case|comp\\.precision|count\\.ovlp|end\\.warn|exec\\.eq\\.perf|extra\\.delim|for\\.incr\\.bef|format\\.oconv|fselect|header\\.brk|header\\.date|header\\.eject|in2\\.substr|info\\.abort|info\\.convert|info\\.enter|info\\.include|info\\.locate|info\\.marks|info\\.mod|input\\.else|inputat|int\\.precision|locate\\.r83|no\\.case|no\\.reselect|no\\.return\\.warn|ongo\\.range|pclose\\.all|perf\\.eq\\.exec|piopen\\.execute|piopen\\.include|piopen\\.matread|piopen\\.selidx|radians|raw\\.output|read\\.retain|real\\.substr|rnext\\.expl|seq\\.255|static\\.dim|stop\\.msg|supp\\.data\\.echo|time\\.millisecond|ult\\.format|use\\.errmsg|var\\.select|vec\\.math|wide\\.if)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "vector functions",
+                    "name": "keyword.other.unibasic",
+                    "match": "\\b(?i:adds|ands|cats|chars|counts|divs|eqs|fields|fmts|ges|gts|iconvs|ifs|indexs|isnulls|lens|lensdp|les|lts|mods|muls|negs|nes|nots|nums|oconvs|ors|reuse|seqs|spaces|splice|strs|subs|substrings|summation|trims|unichars|uniseqs)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "ab",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:abort|abs|abss|acos|alpha|ascii|asin|assigned|atan|auxmap|before|bitand|bitnot|bitor|bitreset|bitset|bittest|bitxor|break|bscan|byte|bytelen|bytetype|byteval)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "c",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:capturing|cat|century\\.pivot|change|changetimestamp|char|chdir|checksum|clear|clearcommon|cleardata|clearfile|clearinput|clearprompts|clearselect|close|closeseq|col1|col2|collectdata|compare|convert|convertcos|cos|cosh|count|create|crt)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "de",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:data|date|dcount|decrypt|defc|defce|del|delete|deletelist|deleteu|descrinfo|digest|disabledec|display|div|downcase|dquote|dround|dtx|ebcdic|echo|else|enabledec|encode|encrypt|enter|eof|ereplace|errmsg|exchange|exp|extract)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "fgh",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:fadd|fdiv|ffix|fflt|field|fieldstore|fileinfo|find|findstr|fix|flush|fmt|fmtdp|fmtsdp|fmul|fold|folddp|footing|format|formlist|fsub|get|gcdistance|getcwdgetenv|getlist|getlocale|getrem|getusergroup|getx|group|groupstore|heading|headinge|headingn|hush)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "ijkl",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:icheck|iconv|ilprompt|index|indices|inmat|input|inputclear|inputdisp|inputdp|inputerr|inputif|inputnull|inputtrap|ins|insert|int|isnull|itype|keyedit|keyexit|keyin|keytrap|latin1|left|len|lendp|let|ln|localdatelocaltime|locate|lock|lowcase|lower)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "mno",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:maketimestamp|mat|matbuild|matchfield|matparse|matread|matreadl|matreadu|matwrite|matwriteu|maximum|minimum|mod|msleep|nap|neg|nobuf|null|num|oconv|open|opencheck|opendev|openpath|openseq|openser|osbread|osbwrite|osclose|osdelete|osopen|osread|oswrite|out)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "pqr",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:page|passlist|pause|pcperform|precision|print|printer|printerr|procread|procwrite|prompt|putenv|pwr|quote|raise|randomize|read|readblk|readl|readlist|readnext|readselect|readseq|readt|readu|readv|readvl|readvu|readxml|real|recordlocked|rem|remove|replace|returning|revremove|rewind|right|rnd|rqm|rtndata|rtnlist|rpc\\.call|rpc\\.connect|rpc\\.disconnect)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "st",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:sadd|scmp|sdiv|seek|select|selecte|selectindex|selectinfo|selectn|selectv|send|sentence|seq|setting|set|setrem|sin|sinh|sleep|smul|sort|soundex|space|sqrt|squote|sselect|sselectn|sselectv|ssub|start|status|str|subr|sum|swap|tabstop|tan|tanh|terminfo|time|timedate|timeout|tparm|tprint|trans|trim|trimb|trimbs|trimf|trimfs|ttyctl|ttyget|ttyset)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "uvwxyz",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:udtexecute|unassigned|unichar|uniseq|unlock|upcase|uprint|userinfo|weof|weofseq|write|writeblk|writelist|writeseq|writeseqf|writet|writeu|writev|writevu|writexml|xlate|xtd)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "bci",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:ClearDiagnostics|GetDiagnostics|SetDiagnostics|SQLAllocConnect|SQLAllocEnv|SQLAllocStmt|SQLBindCol|SQLBindCol|SQLBindParameter|SQLCancel|SQLColAttributes|SQLColumns|SQLConnect|SQLDescribeCol|SQLDisconnect|SQLError|SQLExecDirect|SQLExecute|SQLFetch|SQLFreeConnect|SQLFreeEnv|SQLFreeStmt|SQLGetInfo|SQLGetTypeInfo|SQLNumParams|SQLNumResultCols|SQLParamOptions|SQLPrepare|SQLRowCount|SQLSetConnectOption|SQLSetParam|SQLSpecialColumns|SQLStatistics|SQLTables|SQLTransact)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "dom",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:XDOMOpen|XDOMCreateNode|XDOMWrite|XDOMClose|XDOMValidate|XDOMLocate|XDOMLocateNode|XDOMCreateNode|XDOMEvaluate|XDOMRemove|XDOMAppend|XDOMInsert|XDOMReplace|XDOMAddChild|XDOMClone|XDOMTransform|XDOMGetNodeValue|XDOMGetNodeName|XDOMGetNodeType|XDOMGetAttribute|XDOMGetOwnerDocument|XDOMGetUserData|XDOMSetNodeValue|XDOMSetUserData)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "python",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:PyCall|PyCallFunction|PyCallMethod|PyGetAttr|PyImport|PySetAttr)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "soap",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:SOAPSetDefault|SOAPGetDefault|SOAPCreateRequest|SOAPSetParameters|SOAPSetRequestHeader|SOAPSetRequestBody|SOAPSetRequestContent|SOAPRequestWrite|SOAPSubmitRequest|SOAPGetResponseHeader|SOAPGetFault|protocolLogging)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "sockets",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:AcceptConnection|AddAuthenticationRule|AddCertificate|AddRequestParameter|AnalyzeCertificate|CloseSocket|CreateCertification|CreateCertRequest|CreateRequest|CreateSecureRequest|CreateSecurityContext|GenerateKey|GetCipherSuite|GetHTTPDefault|GetSocketErrorMessage|GetSocketInformation|GetSocketOptions|InitSecureServerSocket|InitServerSocket|LoadSecurityContext|OpenSecureSocket|OpenSocket|ProtocolLogging|ReadSocket|SaveSecurityContext|SetAuthenticationDepth|SetCipherSuite|SetClientauthentication|SetHTTPDefault|SetLocale|SetPrivateKey|SetRandomSeed|SetRequestHeader|SetSocketOptions|ShowSecurityContext|Signature|SubmitRequest|WriteSocket)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "udo",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:UDOArrayAppendItem|UDOArrayDeleteItem|UDOArrayGetItem|UDOArrayGetNextItem|UDOArrayGetSize|UDOArrayInsertItem|UDOArraySetItem|UDOClone|UDOCreate|UDODeleteProperty|UDOFree|UDOGetLastError|UDOGetNextProperty|UDOGetOption|UDOGetProperty|UDOGetPropertyNames|UDOGetType|UDOIsTypeOf|UDORead|UDOSetOption|UDOSetProperty|UDOWrite)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "xml/ami",
+                    "name": "storage.type.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i:closeXMLData|openXMLData|prepareXML|readXMLData|releaseXML|xmlError|XMLGetError|XMLExecute|XMLtoDB|amInitialize|amReceiveMsg|amReceiveRequest|amSendMsg|amSendRequest|amSendResponse|amTerminate|XMAPOpen|XMAPClose|XMAPCreate|XMAPReadNext|XMAPAppendRec|XMAPToXMLDoc)(?![\\%\\.\\_])\\b"
+                },
+                {
+                    "comment": "jbase jabba",
+                    "name": "storage.type.unibasic",
+                    "match": "\\$development|\\$file|\\$global|\\$jbase|\\$lock|\\$system|\\$terminal|\\$vararg|\\$append|\\$classname|\\$clear|\\$clone|\\$delete|\\$dump|\\$equals|\\$fromfile|\\$fromjson|\\$inherit|\\$insert|\\$isfile|\\$ismethod|\\$hasmethod|\\$isobject|\\$isproperty|\\$hasproperty|\\$mcl|\\$mcu|\\$mcp|\\$mcpu|\\$join|\\$keys|\\$lasterror|\\$locate|\\$merge|\\$objecttype|\\$prepend|\\$refcount|\\$setboolean|\\$setstring|\\$setnull|\\$setserialize|\\$size|\\$sort|\\$split|\\$slice|\\$tojson|\\$valuetype"
+                },
+                {
+                    "comment": "deprecated",
+                    "name": "invalid.deprecated.unibasic",
+                    "match": "\\b(?<![\\%\\.\\_])(?i)(go|go\\s{0,1}to)(?![\\%\\.\\_])\\b"
+                }
+            ]
+        },
+        "sbxa": {
+            "patterns": [{
+                "comment": "sbxa common",
+                "disabled": 1,
+                "name": "variable.other.readwrite.sbxa",
+                "match": "\\b(?<![\\%\\.\\_])(?:RECORD|KEY|WORK|OTHER\\.REC|LF\\.INFO|CNT|ACTION|LINE|MAINFILE|F\\.FILE|ORIG\\.REC|LOCK\\.KEY|HEAD|SCR\\.IMAGE|STATUS\\.LINE|BOX\\.CORDS|OUTVAL|OUTVAL\\.FLAGS|F\\.INDX|F\\.INDX\\.DEFNS|GUI|GUIRES|USERDATA|SCREENNO|XUI|SERVICE\\.INFO|EXPRESS\\.VARS|DEBUG\\.LOGGING|USER\\.DEBUG|FREE\\.TEMP|VALUE|RTN\\.FLAG|PARAM|REFRESH|MENU\\.OPT|PROC\\.NAME|LEVEL\\.NO|FILES\\.OPENED|FILEVAR|PARMS|SBPARM|OTHER|SBC\\.PARM|SB\\.CONT|CONTROL|PORT|SYSID|ACNT\\.NAME|TERM\\.DEFN|PRINT\\.DEFN|PASS\\.DEFN|USER\\.ID|USER\\.KEYS|PCTERM|F\\.MD|F\\.DMCONT|F\\.DMDRIV|F\\.PASS|F\\.CONT|F\\.PROC|F\\.MENU|F\\.DMPROC|F\\.DEFN|F\\.G\\.PROC|F\\.G\\.MENU|F\\.G\\.DEFN|F\\.DMSYSDEFN|BT\\.NODE|BT\\.LEV\\.NO|BT\\.ID|BT\\.POS|GUIDATA|SBCLIENT|RES1|RES2|RES3|RES4|XUIDATA)(?![\\%\\.\\_])\\b"
+            }]
+        },
+        "strings": {
+            "patterns": [{
+                    "begin": "\"",
+                    "end": "\"",
+                    "name": "string.quoted.double.unibasic"
+                },
+                {
+                    "begin": "'",
+                    "end": "'",
+                    "name": "string.quoted.single.unibasic"
+                },
+                {
+                    "begin": "\\\\",
+                    "end": "\\\\",
+                    "name": "string.quoted.other.unibasic"
+                }
+            ]
+        }
+    }
 }
-
