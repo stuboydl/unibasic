@@ -8,10 +8,6 @@ Conformed and updated for UniBasic (principally UniVerse).
 
 The intention is to continuously improve this by adding tool tips, formatting and other features along the way.
 
-### Version 0.1.2
-
-* See [Changelog.md](https://github.com/stuboydl/unibasic/blob/master/CHANGELOG.md) for more...
-
 ## Installation
 
 Inside VSCode from the command pallet Install Extension -> UniBasic
