@@ -12,3 +12,4 @@ out/*
 src/*
 ts*.json
 vsc-extension-quickstart.md
+*.vsix

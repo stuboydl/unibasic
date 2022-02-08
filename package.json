@@ -1,67 +1,62 @@
 {
-   "name": "vscode-unibasic",
-   "description": "VSCode Syntax extension for Rocket UniVerse Basic.",
-   "displayName": "U2 UniBasic",
-   "homepage": "https://github.com/stuboydl/unibasic/blob/master/README.md",
-   "icon": "images/unibasic-icon.png",
-   "license": "MIT",
-   "publisher": "stuboydl",
-   "version": "0.1.2",
-   "private": true,
-   "bugs": {
-      "url": "https://github.com/stuboydl/unibasic/issues"
-   },
-   "categories": [
-      "Programming Languages"
-   ],
-   "contributes": {
-      "languages": [
-         {
+    "name": "vscode-unibasic",
+    "description": "VSCode Syntax extension for UniVerse (and other flavours) UniBasic.",
+    "displayName": "U2 UniBasic",
+    "homepage": "https://github.com/stuboydl/unibasic/blob/master/README.md",
+    "icon": "images/unibasic-icon.png",
+    "license": "MIT",
+    "publisher": "stuboydl",
+    "version": "0.1.3",
+    "private": true,
+    "bugs": {
+        "url": "https://github.com/stuboydl/unibasic/issues"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
             "id": "unibasic",
             "aliases": [
-               "UniBasic",
-               "unibasic"
+                "UniBasic",
+                "unibasic"
             ],
             "extensions": [
-               ""
+                ""
             ],
             "configuration": "./language-configuration.json"
-         }
-      ],
-      "snippets": [
-         {
+        }],
+        "snippets": [{
             "language": "unibasic",
             "path": "./snippets/unibasic.json"
-         }
-      ],
-      "grammars": [
-         {
+        }],
+        "grammars": [{
             "language": "unibasic",
             "scopeName": "source.unibasic",
             "path": "./syntaxes/unibasic.tmLanguage.json"
-         }
-      ],
-      "commands": []
-   },
-   "engines": {
-      "vscode": "^1.0.0"
-   },
-   "galleryBanner": {
-      "color": "#0000FF",
-      "theme": "dark"
-   },
-   "repository": {
-      "type": "git",
-      "url": "https://github.com/stuboydl/unibasic"
-   },
-   "keywords": [
-      "D3",
-      "Pick",
-      "Rocket",
-      "U2",
-      "UniVerse",
-      "UniData",
-      "syntax",
-      "highlight"
-   ]
+        }],
+        "commands": []
+    },
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "galleryBanner": {
+        "color": "#0000FF",
+        "theme": "dark"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/stuboydl/unibasic"
+    },
+    "keywords": [
+        "D3",
+        "Pick",
+        "Rocket",
+        "U2",
+        "UniVerse",
+        "UniData",
+        "jBase",
+        "syntax",
+        "highlight"
+    ]
 }

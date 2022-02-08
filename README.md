@@ -1,6 +1,7 @@
 # unibasic README
 
 ## UniBasic Extension for VS Code
+
 This extension is for syntax highlighting [Rocket U2](https://www.rocketsoftware.com/platforms/multivalue) UniBasic.
 
 Conformed and updated for UniBasic (principally UniVerse).
@@ -8,24 +9,22 @@ Conformed and updated for UniBasic (principally UniVerse).
 The intention is to continuously improve this by adding tool tips, formatting and other features along the way.
 
 ### Version 0.1.2
+
 * See [Changelog.md](https://github.com/stuboydl/unibasic/blob/master/CHANGELOG.md) for more...
 
 ## Installation
+
 Inside VSCode from the command pallet Install Extension -> UniBasic
 
-### Manual Install
-Download and install [Microsoft Visual Studio Code](https://code.visualstudio.com/Download) - MS lightweight development environment.
-
-`git clone` this repository into your `.vscode/Extensions` folder (If you do not have git installed you can download the zip of this repository and unzip it to the same location.)
-
-* **Windows** %USERPROFILE%\\.vscode\extensions
-* **Mac** ~/.vscode/extensions
-* **Linux** ~/.vscode/extensions
+## Configuration
 
 Configure resources/tasks.json and resources/unibasic-compile.ps1 for compilation.
 
+If you're using VS Code for Unibasic with git as source control, I recommend you use the resources/GET.DICTS unibasic program (modified for your environment) to manage your dictionaries.
+
 Recommmend default Dark+ theme
 Also, keyword.operator foreground may need tweaking in .vscode\settings.json
+
 ```json
    "editor.tokenColorCustomizations": {
       "textMateRules": [
@@ -38,8 +37,6 @@ Also, keyword.operator foreground may need tweaking in .vscode\settings.json
       ],
    }
 ```
-## Notes on Usage
-- See [Wiki](https://github.com/stuboydl/unibasic/wiki/Notes-on-using-vscode-with-Windows-UV-SB--git) for notes on how to set up your environment and examples.
 
 ## Credits
 
@@ -50,65 +47,3 @@ https://github.com/JacobBennett/sublime-pickbasic
 https://github.com/mallek/vscode-pick-basic-syntax-highlighter
 
 **Enjoy!**
-
-<!-- ## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!** -->
