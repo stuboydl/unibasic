@@ -1,5 +1,12 @@
 # Changelog
 
+## Support dropped for this project
+
+please use either 
+
+- Rocket MV Basic extension https://marketplace.visualstudio.com/items?itemName=RocketSoftware.rocket-mvbasic
+- MV Basic extension https://marketplace.visualstudio.com/items?itemName=MVExtensions.mvbasic
+
 ## Version 0.1.3
 
 - update readme for publishing
