@@ -1,5 +1,12 @@
 # unibasic README
 
+## Support dropped for this project
+
+please use either 
+
+- Rocket MV Basic extension https://marketplace.visualstudio.com/items?itemName=RocketSoftware.rocket-mvbasic
+- MV Basic extension https://marketplace.visualstudio.com/items?itemName=MVExtensions.mvbasic
+
 ## UniBasic Extension for VS Code
 
 This extension is for syntax highlighting [Rocket U2](https://www.rocketsoftware.com/platforms/multivalue) UniBasic.
