@@ -4,8 +4,8 @@
 
 please use either 
 
-- Rocket MV Basic extension https://marketplace.visualstudio.com/items?itemName=RocketSoftware.rocket-mvbasic
 - MV Basic extension https://marketplace.visualstudio.com/items?itemName=MVExtensions.mvbasic
+- Rocket MV Basic extension https://marketplace.visualstudio.com/items?itemName=RocketSoftware.rocket-mvbasic
 
 ## UniBasic Extension for VS Code
 
