@@ -1,8 +1,8 @@
 # unibasic README
 
-## Support dropped for this project
+## Note! Support has been dropped for this project
 
-please use either 
+please use either:
 
 - MV Basic extension https://marketplace.visualstudio.com/items?itemName=MVExtensions.mvbasic
 - Rocket MV Basic extension https://marketplace.visualstudio.com/items?itemName=RocketSoftware.rocket-mvbasic
